@@ -2,7 +2,7 @@
 
 namespace App\Contracts;
 
-interface PanelAdminInterface
+interface UserInterface
 {
 	/**
      * Display a listing of the resource.
