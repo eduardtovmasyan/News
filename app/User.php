@@ -11,12 +11,24 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * @var string
+     */
+    const TYPE_SUPER_ADMIN = 'super_admin';
+    const TYPE_PANEL_ADMIN = 'panel_admin';
+    const TYPE_USER = 'user';
+
+    /**
+     * @var int
+     */
+    const PER_PAGE = 5;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname', 'email', 'password', 'role',
     ];
 
     /**
@@ -37,10 +49,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * @var string
-     */
-    const TYPE_SUPER_ADMIN = 'super_admin';
-    const TYPE_PANEL_ADMIN = 'panel_admin';
-    const TYPE_USER = 'user';
+    
+
+    public function scopeWhichSuperAdmin($query)
+    {
+        return $query->where('role', self::TYPE_SUPER_ADMIN);
+    }
+
+    public function scopeWhichPanelAdmin($query)
+    {
+        return $query->where('role', self::TYPE_PANEL_ADMIN);
+    }
 }
