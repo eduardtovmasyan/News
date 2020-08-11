@@ -9,7 +9,7 @@ class RegisterController extends Controller
 {
     public function showSignupForm()
     {
-        return view('signup');
+        return view('register');
     }
 
     public function signUp(UserValidateRequest $request)
