@@ -21,10 +21,19 @@ Route::get('/admin-panel', function () {
     return view('auth.login');
 });
 
-Route::get('/signup', function () {
-    return view('signup');
+Route::get('/test', function () {
+    return view('admin.home');
 });
 
-Auth::routes();
+//  
+
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/login','LoginController@showLoginForm');
+Route::post('/login','LoginController@logIn')->name('login');
+Route::get('/signup','RegisterController@showSignupForm')->name('signup');
+Route::post('/signup','RegisterController@signUp');
+Route::get('/logout','LoginController@logOut')->name('logout');

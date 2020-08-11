@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\User;
 use App\Contracts\UserInterface;
+use Illuminate\Support\Facades\Hash;
 
 class UserService implements UserInterface
 {
@@ -16,13 +17,12 @@ class UserService implements UserInterface
 
     public function index()
     {
-        $panelAdmins = $this->userModel::whichPanelAdmin()
-            ->paginate($this->userModel::PER_PAGE);
+        $users = $this->userModel::paginate($this->userModel::PER_PAGE);
     }
 
     public function store($request) 
     {
-        $paneladmin = $this->userModel::create([
+        $user = $this->userModel::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
@@ -30,34 +30,31 @@ class UserService implements UserInterface
             'role' => User::TYPE_PANEL_ADMIN,
         ]);
 
-        return $paneladmin;
+        return $user;
     }
 
     public function show($user_id)
     {
-        $panelAdmins = $this->userModel::whichPanelAdmin()
-            ->findOrFail($user_id);
+        $user = $this->userModel::findOrFail($user_id);
     }
 
     public function update($request, $user_id)
     {
-        $panelAdmins = $this->userModel::whichPanelAdmin()
-            ->findOrFail($user_id);
+        $users = $this->userModel::findOrFail($user_id);
 
-        $panelAdmins->update([
+        $users->update([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]); 
 
-        return $panelAdmins;
+        return $users;
     }
 
     public function destroy($user_id)
     {
-        $this->userModel::whichPanelAdmin()
-            ->whereId($user_id)
+        $this->userModel::whereId($user_id)
             ->delete();
     }
 }

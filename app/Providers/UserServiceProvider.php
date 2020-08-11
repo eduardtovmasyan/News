@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class UserServiceProviders extends ServiceProvider
+class UserServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -13,7 +13,7 @@ class UserServiceProviders extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('user', 'App\Services\UserService');
+        $this->app->bind('userCrud', 'App\Services\UserService');
     }
 
     /**
