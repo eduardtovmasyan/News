@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use UserCrud;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use App\Http\Requests\UserValidateRequest;
 
 class UserController extends Controller
 {

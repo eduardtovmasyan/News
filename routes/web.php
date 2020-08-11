@@ -14,13 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('admin.login');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/login','LoginController@showLoginForm');
 Route::post('/login','LoginController@logIn')->name('login');
-Route::get('/signup','RegisterController@showSignupForm')->name('signup');
-Route::post('/signup','RegisterController@signUp');
+Route::get('/register','RegisterController@showSignupForm')->name('register');
+Route::post('/register','RegisterController@signUp');
 Route::get('/logout','LoginController@logOut')->name('logout');
+Route::get('/profile','ProfileController@showProfilePage')->name('profile');

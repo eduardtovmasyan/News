@@ -27,7 +27,6 @@ class UserService implements UserInterface
             'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => User::TYPE_PANEL_ADMIN,
         ]);
 
         return $user;
