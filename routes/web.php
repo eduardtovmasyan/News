@@ -14,23 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/admin-panel', function () {
     return view('auth.login');
 });
 
-Route::get('/test', function () {
-    return view('admin.home');
-});
-
-//  
-
-// Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::get('/login','LoginController@showLoginForm');
 Route::post('/login','LoginController@logIn')->name('login');
