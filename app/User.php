@@ -15,7 +15,6 @@ class User extends Authenticatable
      */
     const TYPE_SUPER_ADMIN = 'super_admin';
     const TYPE_PANEL_ADMIN = 'panel_admin';
-    const TYPE_USER = 'user';
 
     /**
      * @var int

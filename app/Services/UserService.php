@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\User;
-use App\Contracts\SuperAdminInterface;
+use App\Contracts\UserInterface;
 
-class SuperAdminService implements SuperAdminInterface
+class UserService implements UserInterface
 {
     protected  $userModel;
 
@@ -16,47 +16,47 @@ class SuperAdminService implements SuperAdminInterface
 
     public function index()
     {
-        $superAdmins = $this->userModel::whichSuperAdmin()
+        $panelAdmins = $this->userModel::whichPanelAdmin()
             ->paginate($this->userModel::PER_PAGE);
     }
 
     public function store($request) 
     {
-        $superadmin = $this->userModel::create([
+        $paneladmin = $this->userModel::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => User::TYPE_SUPER_ADMIN,
+            'role' => User::TYPE_PANEL_ADMIN,
         ]);
 
-        return $superadmin;
+        return $paneladmin;
     }
 
     public function show($user_id)
     {
-        $superAdmin = $this->userModel::whichSuperAdmin()
+        $panelAdmins = $this->userModel::whichPanelAdmin()
             ->findOrFail($user_id);
     }
 
     public function update($request, $user_id)
     {
-        $superAdmin = $this->userModel::whichSuperAdmin()
+        $panelAdmins = $this->userModel::whichPanelAdmin()
             ->findOrFail($user_id);
 
-        $superAdmin->update([
+        $panelAdmins->update([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]); 
 
-        return $superAdmin;
+        return $panelAdmins;
     }
 
     public function destroy($user_id)
     {
-        $this->userModel::whichSuperAdmin()
+        $this->userModel::whichPanelAdmin()
             ->whereId($user_id)
             ->delete();
     }
