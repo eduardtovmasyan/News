@@ -16,6 +16,11 @@ class ProfileController extends Controller
         return view('admin.profile');
     }
 
+    public function showProfilePageDetails()
+    {
+        return view('admin.userdetails');
+    }
+
     /**
      * Update the specified resource in storage.
      *

@@ -68,7 +68,6 @@
                 <i class="icon-bubbles font-dark hide"></i>
                 <span class="caption-subject font-dark bold uppercase">Super Admin List</span>
             </div>
-            
         </div>
         <div class="portlet-body">
             <div class="tab-content">
@@ -163,7 +162,6 @@
     </div>
 </div>
 @endsection
-
 @section('js')
-    <script src="{{ asset('js/profile_access.js')}}" type="text/javascript"></script>
+<script src="{{ asset('js/profile_access.js')}}" type="text/javascript"></script>
 @endsection

@@ -29,5 +29,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/profile/password','ProfileController@changePassword')->name('profile/password');
     Route::get('/admin-list','AdminListController@adminList')->name('admin-list');
     Route::patch('/profile/{user_id}', 'ProfileAccesController@access');
+    Route::get('/profile/details/{user_id}','ProfileController@showProfilePageDetails')->name('user_details');
 });
 
