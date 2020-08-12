@@ -13,15 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.login');
+Route::group(['middleware' => ['logouted']], function() {
+    Route::get('/','LoginController@showLoginForm');
+    Route::get('/login','LoginController@showLoginForm');
+    Route::post('/login','LoginController@logIn')->name('login');
+    Route::get('/register','RegisterController@showSignupForm')->name('register');
+    Route::post('/register','RegisterController@signUp');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/logout','LoginController@logOut')->name('logout');
+    Route::get('/profile','ProfileController@showProfilePage')->name('profile');
+    Route::post('/profile','ProfileController@details')->name('profile');
+    Route::get('/admin-list','AdminListController@adminList')->name('admin-list');
+    Route::patch('/profile/{user_id}', 'ProfileDetailsController@access');
+});
 
-Route::get('/login','LoginController@showLoginForm');
-Route::post('/login','LoginController@logIn')->name('login');
-Route::get('/register','RegisterController@showSignupForm')->name('register');
-Route::post('/register','RegisterController@signUp');
-Route::get('/logout','LoginController@logOut')->name('logout');
-Route::get('/profile','ProfileController@showProfilePage')->name('profile');

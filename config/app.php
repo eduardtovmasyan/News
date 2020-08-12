@@ -179,6 +179,7 @@ return [
          * My Service Providers...
          */
         App\Providers\UserServiceProvider::class,
+        App\Providers\LoginServiceProvider::class,
 
     ],
 
@@ -232,6 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'UserCrud' => App\Facades\UserCrud::class,
+        'Enter' => App\Facades\LoginProcess::class,
     ],
 
 ];

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use Enter;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginValidateRequest;
 
 class LoginController extends Controller
 {
@@ -12,18 +13,12 @@ class LoginController extends Controller
         return view('admin.login');
     }
 
-    public function logIn(Request $request)
+    public function logIn(LoginValidateRequest $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
 
-        $credentials = $request->except(['_token']);
+        $enter = Enter::logIn($request);
 
-        $user = User::where('email', $request->email)->first();
-
-        if (auth()->attempt($credentials)) {
+        if ($enter) {
             return redirect()->route('home');
         } else {
             session()->flash('message', 'Invalid credentials');

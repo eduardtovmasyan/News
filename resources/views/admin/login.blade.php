@@ -12,13 +12,15 @@
                     <form action="{{ route('login') }}" class="login-form" method="post">
                         <div class="alert alert-danger display-hide">
                             <button class="close" data-close="alert"></button>
-                            <span>Enter any email and password. </span>
+                            @foreach ($errors as $error)
+                            <span>{{$error}}</span><br>
+                            @endforeach
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <input class="form-control form-control-solid placeholder-no-fix form-group" value="{{old('password')}}" type="password" autocomplete="off" placeholder="Password" name="password" required/> </div>
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" value="{{old('password')}}" type="password" autocomplete="off" placeholder="Password" name="password"/> </div>
                                 <div class="col-xs-6">
-                                    <input class="form-control form-control-solid placeholder-no-fix form-group" value="{{old('email')}}"  type="text" autocomplete="off" placeholder="Email" name="email" required/> </div>
+                                    <input class="form-control form-control-solid placeholder-no-fix form-group" value="{{old('email')}}"  type="text" autocomplete="off" placeholder="Email" name="email"/> </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4">

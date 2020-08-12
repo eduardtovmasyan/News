@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $users = UserCrud::index();
-
+        
         return UserResource::collection($users);
     }
 

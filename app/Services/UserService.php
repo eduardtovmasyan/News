@@ -17,7 +17,7 @@ class UserService implements UserInterface
 
     public function index()
     {
-        $users = $this->userModel::paginate($this->userModel::PER_PAGE);
+        return $this->userModel::paginate($this->userModel::PER_PAGE);
     }
 
     public function store($request) 
@@ -34,7 +34,7 @@ class UserService implements UserInterface
 
     public function show($user_id)
     {
-        $user = $this->userModel::findOrFail($user_id);
+        return $this->userModel::findOrFail($user_id);
     }
 
     public function update($request, $user_id)

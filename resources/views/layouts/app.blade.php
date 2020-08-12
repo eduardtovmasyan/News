@@ -57,20 +57,9 @@
                     <div class="top-menu">
                         <ul class="nav navbar-nav pull-right">
                             <!-- BEGIN NOTIFICATION DROPDOWN -->
-                            <!-- DOC: Apply "dropdown-dark" class after "dropdown-extended" to change the dropdown styte -->
-                            <!-- DOC: Apply "dropdown-hoverable" class after below "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
-                            <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
-                            
-                            <!-- END NOTIFICATION DROPDOWN -->
-                            <!-- BEGIN INBOX DROPDOWN -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            
-                            <!-- END TODO DROPDOWN -->
-                            <!-- BEGIN USER LOGIN DROPDOWN -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="{{ asset('/assets/layouts/layout/img/avatar3_small.jpg') }}" />
+                                    <img alt="" class="img-circle" src="{{ asset('/assets/pages/media/users/user.png') }}" />
                                     <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} {{ Auth::user()->surname }} </span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
@@ -79,27 +68,8 @@
                                         <a href="{{ url('profile') }}">
                                         <i class="icon-user"></i> My Profile </a>
                                     </li>
-                                    <li>
-                                        <a href="app_calendar.blade.php">
-                                        <i class="icon-calendar"></i> My Calendar </a>
-                                    </li>
-                                    <li>
-                                        <a href="app_inbox.blade.php">
-                                            <i class="icon-envelope-open"></i> My Inbox
-                                            <span class="badge badge-danger"> 3 </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="app_todo.blade.php">
-                                            <i class="icon-rocket"></i> My Tasks
-                                            <span class="badge badge-success"> 7 </span>
-                                        </a>
-                                    </li>
                                     <li class="divider"> </li>
-                                    <li>
-                                        <a href="page_user_lock_1.blade.php">
-                                        <i class="icon-lock"></i> Lock Screen </a>
-                                    </li>
+                                    
                                     <li>
                                         <a href="{{ route('logout') }}">
                                         <i class="icon-key"></i> Log Out </a>
@@ -131,12 +101,6 @@
                     <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                     <div class="page-sidebar navbar-collapse collapse">
                         <!-- BEGIN SIDEBAR MENU -->
-                        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-                        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-                        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-                        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-                        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
                             <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
                             <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
@@ -156,6 +120,7 @@
                                     <span class="arrow open"></span>
                                 </a>
                                 <ul class="sub-menu">
+                                    @if(Auth::user()->role == 'super_admin')
                                     <li class="nav-item start active open">
                                         <a href="index.blade.php" class="nav-link ">
                                             <i class="icon-bar-chart"></i>
@@ -163,8 +128,9 @@
                                             <span class="selected"></span>
                                         </a>
                                     </li>
+                                    @endif
                                     <li class="nav-item start ">
-                                        <a href="dashboard_2.blade.php" class="nav-link ">
+                                        <a href="{{ url('admin-list') }}" class="nav-link ">
                                             <i class="icon-bulb"></i>
                                             <span class="title">Admin List</span>
                                             <span class="badge badge-success">1</span>
@@ -237,13 +203,16 @@
             </div>
         </div>
     </body>
+    <input type="hidden" id="token" value="{{csrf_token()}}">
     <!-- END FOOTER -->
     <!--[if lt IE 9]>
     <script src="../assets/global/plugins/respond.min.js"></script>
     <script src="../assets/global/plugins/excanvas.min.js"></script>
     <script src="../assets/global/plugins/ie8.fix.min.js"></script>
     <![endif]-->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <!-- BEGIN CORE PLUGINS -->
+
     <script src="{{ asset('assets/global/plugins/jquery.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('assets/global/plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('assets/global/plugins/js.cookie.min.js')}}" type="text/javascript"></script>

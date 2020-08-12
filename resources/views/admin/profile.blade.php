@@ -33,19 +33,31 @@
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
                                     <div class="tab-pane active" id="tab_1_1">
-                                        <form role="form" action="{{ url('api/user') }}" method="patch">
+                                        <form role="form" action="{{ url('profile') }}" method="patch">
                                             <div class="form-group">
                                                 <label class="control-label">First Name</label>
-                                                <input type="text" placeholder="{{ Auth::user()->name }}" class="form-control" name="name"> </div>
+                                                <div class="alert alert-danger display-hide">
+                                                    <button class="close" data-close="alert"></button>
+                                                    <span>{{$errors->first('name')}}</span><br>
+                                                </div>
+                                                <input type="text" placeholder="{{ Auth::user()->name }}" class="form-control" name="name" value="{{ Auth::user()->name }}"> 
+                                            </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Last Name</label>
-                                                    <input type="text" placeholder="{{ Auth::user()->surname }}" class="form-control" name="surname"> </div>
+                                                    <div class="alert alert-danger display-hide">
+                                                        <button class="close" data-close="alert"></button>
+                                                        <span>{{$errors->first('surname')}}</span><br>
+                                                    </div>
+                                                    <input type="text" placeholder="{{ Auth::user()->surname }}" class="form-control" name="surname" value="{{ Auth::user()->surname }}"> </div>
                                                     <div class="form-group">
                                                         <label class="control-label">Email</label>
-                                                        <input type="email" placeholder="{{ Auth::user()->email }}" class="form-control" name="email"> </div>
+                                                        <div class="alert alert-danger display-hide">
+                                                            <button class="close" data-close="alert"></button>
+                                                            <span>{{$errors->first('email')}}</span><br>
+                                                        </div>
+                                                        <input type="email" placeholder="{{ Auth::user()->email }}" class="form-control" name="email" value="{{ Auth::user()->email }}"> </div>
                                                         <div class="margiv-top-10">
                                                             <button class="btn green"> Save Changes </button>
-                                                            <a href="javascript:;" class="btn default"> Cancel </a>
                                                         </div>
                                                         {{ csrf_field() }}
                                                     </form>

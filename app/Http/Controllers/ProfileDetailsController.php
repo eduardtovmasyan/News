@@ -2,26 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use UserCrud;
+use App\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserValidateRequest;
 
-class ProfileController extends Controller
+class ProfileDetailsController extends Controller
 {
-    public function showProfilePage()
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function access(Request $request, $user_id)
     {
-        return view('admin.profile');
+        $user = User::findOrFail($user_id);
+
+        $user->update([
+            'is_active' => $request->is_active
+        ]); 
+
+        return $user;
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  id  $user_id
      * @return \Illuminate\Http\Response
      */
     public function details(Request $request)
-    {   
+    {
         $user = User::findOrFail(Auth::id());
 
         $user->update([

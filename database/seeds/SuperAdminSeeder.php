@@ -18,6 +18,7 @@ class SuperAdminSeeder extends Seeder
             'email' => 'SuperAdmin@gmail.com',
             'password' => Hash::make('superpassword'),
             'role' => User::TYPE_SUPER_ADMIN,
+            'is_active' => User::TYPE_ACCESS_ACCEPTED,
         ]);
     }
 }

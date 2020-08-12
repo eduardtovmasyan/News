@@ -15,6 +15,10 @@ class User extends Authenticatable
      */
     const TYPE_SUPER_ADMIN = 'super_admin';
     const TYPE_PANEL_ADMIN = 'panel_admin';
+    // Access types
+    const TYPE_ACCESS_PANDING = 'panding';
+    const TYPE_ACCESS_ACCEPTED = 'accepted';
+    const TYPE_ACCESS_DENIED = 'denied';
 
     /**
      * @var int
