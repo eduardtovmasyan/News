@@ -31,4 +31,3 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/profile/{user_id}', 'ProfileAccesController@access');
     Route::get('/profile/details/{user_id}','ProfileController@showProfilePageDetails')->name('user_details');
 });
-

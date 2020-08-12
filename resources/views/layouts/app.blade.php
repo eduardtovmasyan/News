@@ -133,19 +133,18 @@
                                         <a href="{{ url('admin-list') }}" class="nav-link ">
                                             <i class="icon-bulb"></i>
                                             <span class="title">Admin List</span>
-                                            <span class="badge badge-success">1</span>
+                                            <!-- <span class="badge badge-success">1</span> -->
                                         </a>
                                     </li>
                                     <li class="nav-item start ">
                                         <a href="dashboard_3.blade.php" class="nav-link ">
                                             <i class="icon-graph"></i>
                                             <span class="title">Dashboard 3</span>
-                                            <span class="badge badge-danger">5</span>
+                                            <!-- <span class="badge badge-danger">5</span> -->
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            
                         </ul>
                         <!-- END SIDEBAR MENU -->
                         <!-- END SIDEBAR MENU -->
@@ -183,12 +182,10 @@
                         <div class="clearfix"></div>
                         <!-- END DASHBOARD STATS 1-->
                         @yield('content')
-                        
                     </div>
                     <!-- END CONTENT BODY -->
                 </div>
                 <!-- END CONTENT -->
-                
             </div>
             <!-- END CONTAINER -->
         </div>
@@ -212,7 +209,6 @@
     <![endif]-->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <!-- BEGIN CORE PLUGINS -->
-
     <script src="{{ asset('assets/global/plugins/jquery.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('assets/global/plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('assets/global/plugins/js.cookie.min.js')}}" type="text/javascript"></script>
