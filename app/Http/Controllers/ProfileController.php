@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use UserCrud;
+use App\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserValidateRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileUpdaiteValidationRequest;
 
 class ProfileController extends Controller
 {
@@ -20,7 +21,7 @@ class ProfileController extends Controller
      * @param  id  $user_id
      * @return \Illuminate\Http\Response
      */
-    public function details(Request $request)
+    public function details(ProfileUpdaiteValidationRequest $request)
     {   
         $user = User::findOrFail(Auth::id());
 
@@ -30,6 +31,6 @@ class ProfileController extends Controller
             'email' => $request->email
         ]); 
 
-        return $user;
+        return redirect()->route('profile');
     }
 }

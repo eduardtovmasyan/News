@@ -33,7 +33,7 @@
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
                                     <div class="tab-pane active" id="tab_1_1">
-                                        <form role="form" action="{{ url('profile') }}" method="patch">
+                                        <form role="form" action="{{ url('profile') }}" method="post">
                                             <div class="form-group">
                                                 <label class="control-label">First Name</label>
                                                 <div class="alert alert-danger display-hide">

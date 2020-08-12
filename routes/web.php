@@ -27,6 +27,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profile','ProfileController@showProfilePage')->name('profile');
     Route::post('/profile','ProfileController@details')->name('profile');
     Route::get('/admin-list','AdminListController@adminList')->name('admin-list');
-    Route::patch('/profile/{user_id}', 'ProfileDetailsController@access');
+    Route::patch('/profile/{user_id}', 'ProfileAccesController@access');
 });
 
