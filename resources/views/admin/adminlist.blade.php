@@ -123,7 +123,7 @@
         </div>
         <div class="portlet-body">
             <div class="tab-content">
-                <div class="tab-pane active" id="portlet_comments_1">
+                <div class="tab-pane active panel_admin_list" id="portlet_comments_1">
                     <!-- BEGIN: Comments -->
                     @foreach($users as $user)
                     @if($user->is_active == 'accepted' && $user->role == 'panel_admin')

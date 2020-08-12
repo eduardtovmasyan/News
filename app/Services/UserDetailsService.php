@@ -32,11 +32,15 @@ class UserDetailsService
     {   
         $user = $this->userModel::findOrFail(Auth::id());
 
-        $user->update([
-            'password' => $request->password,
-        ]); 
+        if (Hash::check($user->password) === $request->password) {
+            $user->update([
+                'password' => $request->newPassword,
+            ]); 
 
-        return $user;
+            return $user;
+        } else {
+            return reponse(['message' =>'Password is incorrect', 401]);
+        }
     }
 
     public function access($request, $user_id)

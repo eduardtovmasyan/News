@@ -65,13 +65,13 @@
                                                 <!-- END PERSONAL INFO TAB -->
                                                 <!-- CHANGE PASSWORD TAB -->
                                                 <div class="tab-pane" id="tab_1_3">
-                                                    <form action="{{ url('profile/password') }}" method="post">
+                                                    <form action="{{ url('/profile/password') }}" method="post">
                                                         <div class="form-group">
                                                             <label class="control-label">Current Password</label>
-                                                            <input type="password" class="form-control"> </div>
+                                                            <input type="password" class="form-control" name="password"> </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">New Password</label>
-                                                                <input type="password" class="form-control"> </div>
+                                                                <input type="password" class="form-control" name="newPassword"> </div>
                                                                 <div class="margin-top-10">
                                                                     <button class="btn green"> Change Password </button>
                                                                     <a href="javascript:;" class="btn default"> Cancel </a>

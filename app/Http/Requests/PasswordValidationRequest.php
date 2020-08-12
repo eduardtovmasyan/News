@@ -14,7 +14,7 @@ class PasswordValidationRequest extends Request
     public function rules()
     {
         return [
-            
+            'password' => 'required|min:8',
         ];
     }
 }
