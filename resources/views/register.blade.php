@@ -1,38 +1,77 @@
-@extends('../layouts.LoginRegisterApp')
+@extends('layouts.LoginRegisterApp')
 @section('content')
 <body class=" login">
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md order-md-1">
-                <form  method="post" action="{{ route('register') }}" class="needs-validation">
-                    <h1 class="h3 mb-3 font-weight-normal mb-5"><b>Please sign up</b></h1>
-                    <div class="mb-3">
-                        <label for="name">Name:</label><br>
-                        <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control form-control-solid placeholder-no-fix form-group">
-                        <div class="error" style='color:red'>{{$errors->first("name")}}</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="surname">Surname:</label><br>
-                        <input type="text" name="surname" id="surname" value="{{old('surname')}}" class="form-control form-control-solid placeholder-no-fix form-group">
-                        <div class="error" style='color:red'>{{$errors->first("surname")}}</div>
-                    </div>
-                    <label for="email">Email:</label><br>
-                    <input type="text" name="email" id="email" value="{{old('email')}}"  class="form-control form-control-solid placeholder-no-fix form-group" placeholder="you@example.com">
-                    <div class="error" style='color:red'>{{$errors->first("email")}}</div>
-                    <div class="my-3">
-                        <label for="password">Password:</label><br>
-                        <input type="password" name="password" id="password" value="{{old('password')}}" class="form-control form-control-solid placeholder-no-fix form-group">
-                        <div class="error" style='color:red'>{{$errors->first("password")}}</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="config_password">Config Password:</label><br>
-                        <input type="password" name="password_confirmation" id="password_confirmation" value="{{old('password_confirmation')}}" class="form-control form-control-solid placeholder-no-fix form-group">
-                        <div class="error" style='color:red'>{{$errors->first("config_password")}}</div>
-                    </div>
-                    <button class="btn btn-primary btn-lg btn-block mt-5">Sign Up</button>
-                    {{csrf_field()}}
-                </form>
+    <!-- BEGIN : LOGIN PAGE 5-2 -->
+    <div class="user-login-5">
+        <div class="row bs-reset">
+            <div class="col-md-6 bs-reset">
+                <div class="login-bg"> </div>
             </div>
+            <div class="col-md-6 login-container bs-reset">
+                
+                <img class="login-logo login-6" src="{{ asset('assets/pages/img/login/login-invert.png') }}" />
+                <div class="login-content">
+                    <h1>News LLC Admin Registration</h1>
+                    <p> Lorem ipsum dolor sit amet, coectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat. Lorem ipsum dolor sit amet, coectetuer adipiscing. </p>
+                    <form  method="post" action="{{ route('register') }}" class="login-form">
+                        
+                        <div class="alert alert-danger display-hide">
+                            <button class="close" data-close="alert"></button>
+                            <br>
+                            <span>{{$errors->first('name')}}</span><br>
+                            <span>{{$errors->first('surname')}}</span><br>
+                            <span>{{$errors->first('email')}}</span><br>
+                            <span>{{$errors->first('password')}}</span><br>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" value="{{old('surname')}}" autocomplete="off" placeholder="Surname" name="surname"/>
+                            </div>
+                            <div class="col-xs-6">
+                                <input class="form-control form-control-solid placeholder-no-fix form-group"  value="{{old('name')}}" autocomplete="off" placeholder="Name" name="name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" value="{{old('email')}}" autocomplete="off" placeholder="Email" name="email"/>
+                            </div>
+                            <div class="col-xs-6">
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" value="{{old('password')}}" autocomplete="off" placeholder="Password" name="password"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" value="{{old('password_confirmation')}}" type="password" autocomplete="off" placeholder="Config Password" name="password_confirmation"/>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="rememberme mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" name="remember" value="1" /> Remember me
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="col-sm-8 text-right">
+                                <button class="btn blue" type="submit">Register</button>
+                                {{csrf_field()}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="login-footer">
+                    <div class="row bs-reset">
+                        <div class="col-xs-5 bs-reset">
+                        </div>
+                        <div class="col-xs-7 bs-reset">
+                            <div class="login-copyright text-right">
+                                <p>Copyright &copy; News LLC 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </body>

@@ -95,7 +95,7 @@
                                         @endif
                                         
                                         <li>
-                                            <a href="#">View</a>
+                                            <a href="/profile/details/{{ $user->id }}">View</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -146,7 +146,7 @@
                                         @endif
                                         
                                         <li>
-                                            <a href="/api/user/{{ $user->id }}">View</a>
+                                            <a href="/profile/details/{{ $user->id }}">View</a>
                                         </li>
                                     </ul>
                                 </div>

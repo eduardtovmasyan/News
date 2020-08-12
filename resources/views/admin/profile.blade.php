@@ -36,25 +36,19 @@
                                         <form role="form" action="{{ url('profile/details') }}" method="post">
                                             <div class="form-group">
                                                 <label class="control-label">First Name</label>
-                                                <div class="alert alert-danger display-hide">
-                                                    <button class="close" data-close="alert"></button>
-                                                    <span>{{$errors->first('name')}}</span><br>
-                                                </div>
+                                                <br>
+                                                    <span style="color: red">{{$errors->first('name')}}</span><br>
                                                 <input type="text" placeholder="{{ Auth::user()->name }}" class="form-control" name="name" value="{{ Auth::user()->name }}"> 
                                             </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Last Name</label>
-                                                    <div class="alert alert-danger display-hide">
-                                                        <button class="close" data-close="alert"></button>
-                                                        <span>{{$errors->first('surname')}}</span><br>
-                                                    </div>
+                                                    <br>
+                                                        <span style="color: red">{{$errors->first('surname')}}</span><br>
                                                     <input type="text" placeholder="{{ Auth::user()->surname }}" class="form-control" name="surname" value="{{ Auth::user()->surname }}"> </div>
                                                     <div class="form-group">
                                                         <label class="control-label">Email</label>
-                                                        <div class="alert alert-danger display-hide">
-                                                            <button class="close" data-close="alert"></button>
-                                                            <span>{{$errors->first('email')}}</span><br>
-                                                        </div>
+                                                        <br>
+                                                            <span style="color: red">{{$errors->first('email')}}</span><br>
                                                         <input type="email" placeholder="{{ Auth::user()->email }}" class="form-control" name="email" value="{{ Auth::user()->email }}"> </div>
                                                         <div class="margiv-top-10">
                                                             <button class="btn green"> Save Changes </button>
@@ -68,9 +62,12 @@
                                                     <form action="{{ url('/profile/password') }}" method="post">
                                                         <div class="form-group">
                                                             <label class="control-label">Current Password</label>
+                                                            <br>
+                                                    <span style="color: red">{{$errors->first('password')}}</span><br>
                                                             <input type="password" class="form-control" name="password"> </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">New Password</label>
+                                                                <br>
                                                                 <input type="password" class="form-control" name="newPassword"> </div>
                                                                 <div class="margin-top-10">
                                                                     <button class="btn green"> Change Password </button>

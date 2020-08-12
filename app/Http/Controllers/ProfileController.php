@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use UserCrud;
 use UserDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,11 @@ class ProfileController extends Controller
         return view('admin.profile');
     }
 
-    public function showProfilePageDetails()
+    public function showProfilePageDetails($user_id)
     {
-        return view('admin.userdetails');
+        $user = UserCrud::show($user_id);
+
+        return view('admin.userdetails')->with('user', $user);
     }
 
     /**

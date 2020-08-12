@@ -42,7 +42,7 @@
                     <!-- BEGIN LOGO -->
                     <div class="page-logo">
                         <a href="{{ url('home') }}">
-                        <img src="../assets/layouts/layout/img/logo.png" alt="logo" class="logo-default"/> </a>
+                        <img src="{{ asset('assets/layouts/layout/img/logo.png') }}" alt="logo" class="logo-default"/> </a>
                         <div class="menu-toggler sidebar-toggler">
                             <span></span>
                         </div>
@@ -163,7 +163,7 @@
                         <div class="page-bar">
                             <ul class="page-breadcrumb">
                                 <li>
-                                    <a href="index.blade.php">Home</a>
+                                    <a href="{{ url('home') }}">Home</a>
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>
