@@ -32,14 +32,14 @@ class UserDetailsService
     {   
         $user = $this->userModel::findOrFail(Auth::id());
 
-        if (Hash::check($user->password) === $request->password) {
+        if (Hash::check($request->password, $user->password)) {
             $user->update([
-                'password' => $request->newPassword,
+                'password' => Hash::make($request->newPassword),
             ]); 
 
             return $user;
         } else {
-            return reponse(['message' =>'Password is incorrect', 401]);
+            return response(['message' => 'Password is incorrect', 401]);
         }
     }
 

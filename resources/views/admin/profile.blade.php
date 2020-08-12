@@ -76,6 +76,7 @@
                                                                     <button class="btn green"> Change Password </button>
                                                                     <a href="javascript:;" class="btn default"> Cancel </a>
                                                                 </div>
+                                                            {{ csrf_field() }}
                                                             </form>
                                                         </div>
                                                         <!-- END CHANGE PASSWORD TAB -->
