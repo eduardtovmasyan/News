@@ -25,7 +25,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/logout','LoginController@logOut')->name('logout');
     Route::get('/profile','ProfileController@showProfilePage')->name('profile');
-    Route::post('/profile','ProfileController@details')->name('profile');
+    Route::post('/profile/details','ProfileController@details')->name('profile/details');
+    Route::post('/profile/password','ProfileController@changePassword')->name('profile/password');
     Route::get('/admin-list','AdminListController@adminList')->name('admin-list');
     Route::patch('/profile/{user_id}', 'ProfileAccesController@access');
 });

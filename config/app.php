@@ -180,6 +180,7 @@ return [
          */
         App\Providers\UserServiceProvider::class,
         App\Providers\LoginServiceProvider::class,
+        App\Providers\UserDetailsServiceProvider::class,
 
     ],
 
@@ -234,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'UserCrud' => App\Facades\UserCrud::class,
         'Enter' => App\Facades\LoginProcess::class,
+        'UserDetails' => App\Facades\UserDetails::class,
     ],
 
 ];

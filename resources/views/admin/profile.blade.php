@@ -33,7 +33,7 @@
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
                                     <div class="tab-pane active" id="tab_1_1">
-                                        <form role="form" action="{{ url('profile') }}" method="post">
+                                        <form role="form" action="{{ url('profile/details') }}" method="post">
                                             <div class="form-group">
                                                 <label class="control-label">First Name</label>
                                                 <div class="alert alert-danger display-hide">
@@ -65,7 +65,7 @@
                                                 <!-- END PERSONAL INFO TAB -->
                                                 <!-- CHANGE PASSWORD TAB -->
                                                 <div class="tab-pane" id="tab_1_3">
-                                                    <form action="#" method="post">
+                                                    <form action="{{ url('profile/password') }}" method="post">
                                                         <div class="form-group">
                                                             <label class="control-label">Current Password</label>
                                                             <input type="password" class="form-control"> </div>
@@ -73,7 +73,7 @@
                                                                 <label class="control-label">New Password</label>
                                                                 <input type="password" class="form-control"> </div>
                                                                 <div class="margin-top-10">
-                                                                    <a href="javascript:;" class="btn green"> Change Password </a>
+                                                                    <button class="btn green"> Change Password </button>
                                                                     <a href="javascript:;" class="btn default"> Cancel </a>
                                                                 </div>
                                                             </form>
