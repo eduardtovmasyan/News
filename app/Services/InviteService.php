@@ -21,6 +21,6 @@ class InviteService
     public function send($data)
     {
         Mail::to($data['email'])
-            ->send(new Invitation($data));
+            ->queue(new Invitation($data));
     }
 }
