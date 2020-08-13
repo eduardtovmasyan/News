@@ -31,4 +31,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/admin-list','AdminListController@adminList')->name('admin-list');
     Route::patch('/profile/{user_id}', 'ProfileAccesController@access');
     Route::get('/profile/details/{user_id}','ProfileController@showProfilePageDetails')->name('user_details');
+    Route::get('/invite','InvitationController@showInvitationPage')->name('invite');
 });

@@ -122,7 +122,7 @@
                                 <ul class="sub-menu">
                                     @if(Auth::user()->role == 'super_admin')
                                     <li class="nav-item start active open">
-                                        <a href="index.blade.php" class="nav-link ">
+                                        <a href="{{ url('invite') }}" class="nav-link ">
                                             <i class="icon-bar-chart"></i>
                                             <span class="title">Invite New Admin</span>
                                             <span class="selected"></span>
