@@ -30,7 +30,6 @@ class Notification extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        // dd($this->newAdmin);
         return $this->view('emails.notification')
             ->with([
                 'name' => $this->newAdmin['name'],

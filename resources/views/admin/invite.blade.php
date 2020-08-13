@@ -15,34 +15,38 @@
         </div>
     </div>
     <div class="portlet-body form">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form"  method="post" action="{{ route('invite') }}">
             <div class="form-body">
                 <div class="form-group">
-                    <label class="col-md-1 control-label">Message: </label>
+                    <label class="col-md-1 control-label"><strong>Message: </strong></label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control input-lg" placeholder="Message"> </div>
+                        <input type="text" name="message" class="form-control input-lg" placeholder="Message"> </div>
                     </div>
+                    <br>
                     <div class="form-group">
-                        <label class="col-md-1 control-label">Email: </label>
+                    <span style="color: red; margin-left: 15px;">{{$errors->first('email')}}</span>
+                        <label class="col-md-1 control-label"><strong>Email: </strong></label>
                         <div class="col-md-10">
-                            <input type="email" class="form-control input-lg" placeholder="Email"> </div>
+                            <input type="email" name="email" class="form-control input-lg" placeholder="Email"> </div>
                         </div>
-                        
+                        <br>
                         
                         <div class="form-group">
-                            <label class="col-md-1 control-label">Role: </label>
+                    <span style="color: red; margin-left: 15px;">{{$errors->first('confirm_password')}}</span>
+                            <label class="col-md-1 control-label"><strong>Role: </strong></label>
                             <div class="col-md-10">
-                                <select class="form-control input-lg">
+                                <select name="role" class="form-control input-lg">
                                     <option disabled="" selected="">Please Choose A Role</option>
-                                    <option>Super Admin</option>
-                                    <option>Panel Admin</option>
+                                    <option value="super_admin">Super Admin</option>
+                                    <option value="panel_admin">Panel Admin</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="form-actions right1" dir="rtl">
-                        <button type="button" class="btn default">Cancel</button>
-                        <button type="submit" class="btn green">Submit</button>
+                        {{csrf_field()}}
+                        <a href="{{ route('home') }}" type="button" class="btn default">Cancel</a>
+                        <button type="submit" class="btn green">Invite</button>
                     </div>
                 </form>
             </div>

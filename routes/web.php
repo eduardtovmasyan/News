@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Mail\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +31,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/profile/{user_id}', 'ProfileAccesController@access');
     Route::get('/profile/details/{user_id}','ProfileController@showProfilePageDetails')->name('user_details');
     Route::get('/invite','InvitationController@showInvitationPage')->name('invite');
+    Route::post('/invite','InvitationController@sendInvitationMail')->name('invite');
+    Route::get('/create','CreateAdminController@showCreateAdminPage')->name('create');
+    Route::post('/create','CreateAdminController@store')->name('create');
 });

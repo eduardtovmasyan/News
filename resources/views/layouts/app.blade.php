@@ -102,7 +102,6 @@
                     <div class="page-sidebar navbar-collapse collapse">
                         <!-- BEGIN SIDEBAR MENU -->
                         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-                            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
                             <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
                             <li class="sidebar-toggler-wrapper hide">
                                 <div class="sidebar-toggler">
@@ -110,8 +109,6 @@
                                 </div>
                             </li>
                             <!-- END SIDEBAR TOGGLER BUTTON -->
-                            <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-                            
                             <li class="nav-item start active open">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="icon-home"></i>
@@ -128,21 +125,20 @@
                                             <span class="selected"></span>
                                         </a>
                                     </li>
+                                    <li class="nav-item start ">
+                                        <a href="{{ url('create') }}" class="nav-link ">
+                                            <i class="icon-graph"></i>
+                                            <span class="title">Create New Admin</span>
+                                        </a>
+                                    </li>
                                     @endif
                                     <li class="nav-item start ">
                                         <a href="{{ url('admin-list') }}" class="nav-link ">
                                             <i class="icon-bulb"></i>
                                             <span class="title">Admin List</span>
-                                            <!-- <span class="badge badge-success">1</span> -->
                                         </a>
                                     </li>
-                                    <li class="nav-item start ">
-                                        <a href="dashboard_3.blade.php" class="nav-link ">
-                                            <i class="icon-graph"></i>
-                                            <span class="title">Dashboard 3</span>
-                                            <!-- <span class="badge badge-danger">5</span> -->
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
                         </ul>
@@ -202,11 +198,6 @@
     </body>
     <input type="hidden" id="token" value="{{csrf_token()}}">
     <!-- END FOOTER -->
-    <!--[if lt IE 9]>
-    <script src="../assets/global/plugins/respond.min.js"></script>
-    <script src="../assets/global/plugins/excanvas.min.js"></script>
-    <script src="../assets/global/plugins/ie8.fix.min.js"></script>
-    <![endif]-->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <!-- BEGIN CORE PLUGINS -->
     <script src="{{ asset('assets/global/plugins/jquery.min.js')}}" type="text/javascript"></script>

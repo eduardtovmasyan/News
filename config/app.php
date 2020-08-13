@@ -183,6 +183,8 @@ return [
         App\Providers\UserDetailsServiceProvider::class,
         App\Providers\NotificationServiceProvider::class,
         App\Providers\AdminListServiceProvider::class,
+        App\Providers\InviteServiceProvider::class,
+        App\Providers\CreateServiceProvider::class,
 
     ],
 
@@ -240,6 +242,8 @@ return [
         'UserDetails' => App\Facades\UserDetails::class,
         'Notification' => App\Facades\Notification::class,
         'AdminList' => App\Facades\AdminList::class,
+        'Invite' => App\Facades\Invite::class,
+        'Create' => App\Facades\Create::class,
     ],
 
 ];

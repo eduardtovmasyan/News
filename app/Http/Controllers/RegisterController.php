@@ -15,7 +15,7 @@ class RegisterController extends Controller
 
     public function signUp(UserValidateRequest $request)
     {   
-    	UserCrud::store($request);
+        UserCrud::store($request);
 
         $req = $request->toArray();
 
