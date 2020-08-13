@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use UserCrud;
+use App\User;
+use AdminList;
 use Illuminate\Http\Request;
 
 class AdminListController extends Controller
 {
     public function adminList()
     {
-    	$users = UserCrud::index();
+    	$superAdmins = AdminList::superAdmins();
+    	$acceptedPanelAdmins = AdminList::acceptedPanelAdmins();
+    	$pandingPanelAdmins = AdminList::pandingPanelAdmins();
 
-        return view('admin.adminlist')->with('users', $users);
+        return view('admin.adminlist')
+        	->with('superAdmins', $superAdmins)
+        	->with('pandingPanelAdmins', $pandingPanelAdmins)
+        	->with('acceptedPanelAdmins', $acceptedPanelAdmins);
     }
 }

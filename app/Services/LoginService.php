@@ -21,11 +21,13 @@ class LoginService
 
         $user = User::where('email', $request->email)->first();
 
-        // if (isset($user) && $user->is_active === true) {
-            if (auth()->attempt($credentials)) {
-                return true;
-            }
-        // }
+        if (!isset($user) || $user->is_active !== User::TYPE_ACCESS_ACCEPTED) {
+            return false;
+        }
+
+        if (auth()->attempt($credentials)) {
+            return true;
+        }
 
         return false;
     }

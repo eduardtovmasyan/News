@@ -181,6 +181,8 @@ return [
         App\Providers\UserServiceProvider::class,
         App\Providers\LoginServiceProvider::class,
         App\Providers\UserDetailsServiceProvider::class,
+        App\Providers\NotificationServiceProvider::class,
+        App\Providers\AdminListServiceProvider::class,
 
     ],
 
@@ -236,6 +238,8 @@ return [
         'UserCrud' => App\Facades\UserCrud::class,
         'Enter' => App\Facades\LoginProcess::class,
         'UserDetails' => App\Facades\UserDetails::class,
+        'Notification' => App\Facades\Notification::class,
+        'AdminList' => App\Facades\AdminList::class,
     ],
 
 ];

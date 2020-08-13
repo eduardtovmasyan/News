@@ -21,8 +21,7 @@ class LoginController extends Controller
         if ($enter) {
             return redirect()->route('home');
         } else {
-            session()->flash('message', 'Invalid credentials');
-
+            // session()->flash('message', 'Invalid credentials');
             return redirect()->back();
         }
     }

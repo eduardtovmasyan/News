@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use UserCrud;
+use Notification;
 use App\Http\Requests\UserValidateRequest;
 
 class RegisterController extends Controller
@@ -16,8 +17,10 @@ class RegisterController extends Controller
     {   
     	UserCrud::store($request);
 
-        session()->flash('message', 'Your account is created');
-       
+        $req = $request->toArray();
+
+        Notification::send($req);
+
         return redirect()->route('login');
     }
 }

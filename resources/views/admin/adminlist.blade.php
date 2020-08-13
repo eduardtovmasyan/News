@@ -21,8 +21,7 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_actions_pending">
                     <!-- BEGIN: Actions -->
-                    @foreach($users as $user)
-                    @if($user->is_active == 'panding')
+                    @foreach($pandingPanelAdmins as $pandingPanelAdmin)
                     <div class="mt-actions">
                         <div class="mt-action">
                             <div class="mt-action-img">
@@ -31,28 +30,32 @@
                                 <div class="mt-action-row">
                                     <div class="mt-action-info ">
                                         <div class="mt-action-details ">
-                                            <span class="mt-action-author">{{ $user->name }} {{ $user->surname }}</span>
-                                            <p class="mt-action-desc">{{ $user->email }}</p>
+                                            <span class="mt-action-author">{{ $pandingPanelAdmin->name }} {{ $pandingPanelAdmin->surname }}</span>
+                                            <p class="mt-action-desc">{{ $pandingPanelAdmin->email }}</p>
                                         </div>
                                     </div>
                                     <div class="mt-action-datetime ">
                                         <span class="mt-action-date"></span>
                                         <span class="mt-action-dot bg-green"></span>
-                                        <span class="mt=action-time">{{ $user->created_at }}</span>
+                                        <span class="mt=action-time">{{ $pandingPanelAdmin->created_at }}</span>
                                     </div>
                                     <div class="mt-action-buttons ">
                                         <div class="btn-group btn-group-circle">
-                                            <button type="button" class="btn btn-outline green btn-sm profile-accept" value="{{ $user->id }} ">Accept</button>
-                                            <button type="button" class="btn btn-outline red btn-sm profile-decline" value="{{ $user->id }} ">Decline</button>
+                                            <button type="button" class="btn btn-outline green btn-sm profile-accept" value="{{ $pandingPanelAdmin->id }} ">Accept</button>
+                                            <button type="button" class="btn btn-outline red btn-sm profile-decline" value="{{ $pandingPanelAdmin->id }} ">Decline</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endif
                     @endforeach
                     <!-- END: Actions -->
+                    <div class="row">
+                        <div class="mx-auto">
+                            {{ $pandingPanelAdmins->links() }}
+                        </div>
+                    </div>
                 </div>
                 
             </div>
@@ -73,38 +76,41 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="portlet_comments_1">
                     <!-- BEGIN: Comments -->
-                    @foreach($users as $user)
-                    @if($user->is_active == 'accepted' && $user->role == 'super_admin')
+                    @foreach($superAdmins as $superAdmin)
                     <div class="mt-comments">
                         <div class="mt-comment">
                             <div class="mt-comment-img">
                             <img src="../assets/pages/media/users/user.png"> </div>
                             <div class="mt-comment-body">
                                 <div class="mt-comment-info">
-                                    <span class="mt-comment-author">{{ $user->name }} {{ $user->surname }}</span>
-                                    <span class="mt-comment-date">{{ $user->created_at }}</span>
+                                    <span class="mt-comment-author">{{ $superAdmin->name }} {{ $superAdmin->surname }}</span>
+                                    <span class="mt-comment-date">{{ $superAdmin->created_at }}</span>
                                 </div>
-                                <div class="mt-comment-text"> {{ $user->email }} </div>
+                                <div class="mt-comment-text"> {{ $superAdmin->email }} </div>
                                 <div class="mt-comment-details">
-                                    <span class="mt-comment-status mt-comment-status-rejected">{{ $user->role }}</span>
+                                    <span class="mt-comment-status mt-comment-status-rejected">{{ $superAdmin->role }}</span>
                                     <ul class="mt-comment-actions">
-                                        @if($user->id == Auth::id())
+                                        @if($superAdmin->id == Auth::id())
                                         <li>
                                             <a href="{{ url('profile') }}">Edit</a>
                                         </li>
                                         @endif
                                         
                                         <li>
-                                            <a href="/profile/details/{{ $user->id }}">View</a>
+                                            <a href="/profile/details/{{ $superAdmin->id }}">View</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endif
                     @endforeach
                     <!-- END: Comments -->
+                    <div class="row">
+                        <div class="mx-auto">
+                            {{$superAdmins->links()}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,38 +130,41 @@
             <div class="tab-content">
                 <div class="tab-pane active panel_admin_list" id="portlet_comments_1">
                     <!-- BEGIN: Comments -->
-                    @foreach($users as $user)
-                    @if($user->is_active == 'accepted' && $user->role == 'panel_admin')
+                    @foreach($acceptedPanelAdmins as $acceptedPanelAdmin)
                     <div class="mt-comments">
                         <div class="mt-comment">
                             <div class="mt-comment-img">
                             <img src="../assets/pages/media/users/user.png"> </div>
                             <div class="mt-comment-body">
                                 <div class="mt-comment-info">
-                                    <span class="mt-comment-author">{{ $user->name }} {{ $user->surname }}</span>
-                                    <span class="mt-comment-date">{{ $user->created_at }}</span>
+                                    <span class="mt-comment-author">{{ $acceptedPanelAdmin->name }} {{ $acceptedPanelAdmin->surname }}</span>
+                                    <span class="mt-comment-date">{{ $acceptedPanelAdmin->created_at }}</span>
                                 </div>
-                                <div class="mt-comment-text"> {{ $user->email }} </div>
+                                <div class="mt-comment-text"> {{ $acceptedPanelAdmin->email }} </div>
                                 <div class="mt-comment-details">
-                                    <span class="mt-comment-status mt-comment-status-rejected">{{ $user->role }}</span>
+                                    <span class="mt-comment-status mt-comment-status-rejected">{{ $acceptedPanelAdmin->role }}</span>
                                     <ul class="mt-comment-actions">
-                                        @if($user->id == Auth::id())
+                                        @if($acceptedPanelAdmin->id == Auth::id())
                                         <li>
                                             <a href="{{ url('profile') }}">Edit</a>
                                         </li>
                                         @endif
                                         
                                         <li>
-                                            <a href="/profile/details/{{ $user->id }}">View</a>
+                                            <a href="/profile/details/{{ $acceptedPanelAdmin->id }}">View</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endif
                     @endforeach
                     <!-- END: Comments -->
+                    <div class="row">
+                        <div class="mx-auto">
+                            {{$acceptedPanelAdmins->links()}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
