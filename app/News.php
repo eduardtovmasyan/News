@@ -21,4 +21,19 @@ class News extends Model
     protected $fillable = [
         'news', 'user_id',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
 }
