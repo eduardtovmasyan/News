@@ -86,3 +86,20 @@ $(document).on('click', '.admin_block', function() {
   });
 });
 
+$(document).on('click', '.admin_admit', function() {
+  var user_id = $(this).data('id')
+  var t = $(this)
+
+  $.ajax({
+      type: 'patch',
+      url: `/profile/${user_id}/admit`,
+      headers: { 
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        '_token': token 
+      },
+      success: function(r) {
+        $(t).closest('.mt-comments').remove()
+      }
+  });
+});
+

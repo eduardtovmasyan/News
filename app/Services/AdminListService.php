@@ -27,4 +27,9 @@ class AdminListService
     {
         return $this->userModel::WhichPandingPanelAdmin()->orderByDesc('id')->paginate($this->userModel::PER_PAGE);
     }
+
+    public function blockedPanelAdmins()
+    {
+        return $this->userModel::WhichBlockedPanelAdmin()->orderByDesc('id')->paginate($this->userModel::PER_PAGE);
+    }
 }

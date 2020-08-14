@@ -76,4 +76,10 @@ class User extends Authenticatable
         return $query->where('role', self::TYPE_PANEL_ADMIN)
                     ->where('is_active', self::TYPE_ACCESS_PANDING);
     }
+
+    public function scopeWhichBlockedPanelAdmin($query)
+    {
+        return $query->where('role', self::TYPE_PANEL_ADMIN)
+                    ->where('is_active', self::TYPE_ACCESS_DENIED);
+    }
 }

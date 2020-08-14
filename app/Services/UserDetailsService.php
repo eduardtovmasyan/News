@@ -76,4 +76,15 @@ class UserDetailsService
         return $user;
     }
 
+    public function admit($user_id)
+    {   
+        $user = $this->userModel::findOrFail($user_id);
+
+        $user->update([
+            'is_active' => $this->userModel::TYPE_ACCESS_ACCEPTED,
+        ]); 
+
+        return $user;
+    }
+
 }

@@ -33,4 +33,12 @@ class ProfileAccesController extends Controller
         
         return redirect()->route('login');
     }
+
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function admit($user_id)
+    {
+        return UserDetails::admit($user_id);
+    }
 }

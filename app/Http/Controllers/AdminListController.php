@@ -13,10 +13,12 @@ class AdminListController extends Controller
         $superAdmins = AdminList::superAdmins();
         $acceptedPanelAdmins = AdminList::acceptedPanelAdmins();
         $pandingPanelAdmins = AdminList::pandingPanelAdmins();
+        $blockedPanelAdmins = AdminList::blockedPanelAdmins();
 
         return view('admin.adminlist')
             ->with('superAdmins', $superAdmins)
             ->with('pandingPanelAdmins', $pandingPanelAdmins)
-            ->with('acceptedPanelAdmins', $acceptedPanelAdmins);
+            ->with('acceptedPanelAdmins', $acceptedPanelAdmins)
+            ->with('blockedPanelAdmins', $blockedPanelAdmins);
     }
 }
