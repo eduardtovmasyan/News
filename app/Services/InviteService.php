@@ -38,6 +38,5 @@ class InviteService
 
         Mail::to($data['email'])
             ->queue(new Invitation($user));
-
     }
 }

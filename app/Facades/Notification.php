@@ -12,5 +12,4 @@ class Notification extends Facade
     protected static function getFacadeAccessor() {
         return 'notification';
     }
-    
 }

@@ -12,5 +12,4 @@ class UserCrud extends Facade
     protected static function getFacadeAccessor() {
         return 'userCrud';
     }
-    
 }

@@ -35,7 +35,6 @@
                                             <a href="{{ url('profile') }}">Edit</a>
                                         </li>
                                         @endif
-                                        
                                         <li>
                                             <a href="/profile/details/{{ $acceptedPanelAdmin->id }}">View</a>
                                         </li>

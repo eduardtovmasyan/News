@@ -53,8 +53,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
-
     public function scopeWhichSuperAdmin($query)
     {
         return $query->where('role', self::TYPE_SUPER_ADMIN);

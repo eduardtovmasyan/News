@@ -78,10 +78,6 @@
                                 </ul>
                             </li>
                             <!-- END USER LOGIN DROPDOWN -->
-                            <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            
-                            <!-- END QUICK SIDEBAR TOGGLER -->
                         </ul>
                     </div>
                     <!-- END TOP NAVIGATION MENU -->
@@ -89,8 +85,6 @@
                 <!-- END HEADER INNER -->
             </div>
             <!-- END HEADER -->
-            <!-- BEGIN HEADER &
-            CONTENT DIVIDER -->
             <div class="clearfix"> </div>
             <!-- END HEADER & CONTENT DIVIDER -->
             <!-- BEGIN CONTAINER -->
@@ -119,32 +113,30 @@
                                     @if(Auth::user()->role == 'super_admin')
                                     <li class="nav-item start active open">
                                         <a href="{{ url('invite') }}" class="nav-link ">
-                                            <i class="icon-bar-chart"></i>
+                                            <i class="fa fa-user-plus"></i>
                                             <span class="title">Invite New Admin</span>
                                             <span class="selected"></span>
                                         </a>
                                     </li>
                                     <li class="nav-item start ">
                                         <a href="{{ url('create') }}" class="nav-link ">
-                                            <i class="icon-graph"></i>
+                                            <i class="fa fa-user-plus"></i>
                                             <span class="title">Create New Admin</span>
                                         </a>
                                     </li>
                                     @endif
                                     <li class="nav-item start ">
                                         <a href="{{ url('admin/list/super') }}" class="nav-link ">
-                                            <i class="icon-bulb"></i>
+                                            <i class="fa fa-user-secret"></i>
                                             <span class="title">Super Admin List</span>
                                         </a>
                                     </li>
-
                                     <li class="nav-item start ">
                                         <a href="{{ url('admin/list/panel') }}" class="nav-link ">
-                                            <i class="icon-bulb"></i>
+                                            <i class="fa fa-user"></i>
                                             <span class="title">Panel Admin List</span>
                                         </a>
                                     </li>
-
                                     @if(Auth::user()->role == 'super_admin')
                                     <li class="nav-item start ">
                                         <a href="{{ url('admin/list/accept-decline') }}" class="nav-link ">
@@ -152,10 +144,9 @@
                                             <span class="title">ACCEPT/DECLINE</span>
                                         </a>
                                     </li>
-
                                     <li class="nav-item start ">
                                         <a href="{{ url('admin/list/blocked') }}" class="nav-link ">
-                                            <i class="icon-bulb"></i>
+                                            <i class="fa fa-user-times"></i>
                                             <span class="title">Blocked Admin List</span>
                                         </a>
                                     </li>
@@ -174,7 +165,6 @@
                     <!-- BEGIN CONTENT BODY -->
                     <div class="page-content">
                         <!-- BEGIN PAGE HEADER-->
-                        
                         <!-- BEGIN PAGE BAR -->
                         <div class="page-bar">
                             <ul class="page-breadcrumb">
@@ -188,14 +178,8 @@
                             </ul>
                         </div>
                         <!-- END PAGE BAR -->
-                        <!-- BEGIN PAGE TITLE-->
-                        <!-- <h1 class="page-title"> Admin Dashboard
-                        <small>statistics, charts, recent events and reports</small>
-                        </h1> -->
-                        <!-- END PAGE TITLE-->
                         <!-- END PAGE HEADER-->
                         <!-- BEGIN DASHBOARD STATS 1-->
-                        
                         <div class="clearfix"></div>
                         <!-- END DASHBOARD STATS 1-->
                         @yield('content')
@@ -219,7 +203,6 @@
     </body>
     <input type="hidden" id="token" value="{{csrf_token()}}">
     <!-- END FOOTER -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <!-- BEGIN CORE PLUGINS -->
     <script src="{{ asset('assets/global/plugins/jquery.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('assets/global/plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -273,5 +256,4 @@
     <script src="{{ asset('assets/layouts/global/scripts/quick-nav.min.js')}}" type="text/javascript"></script>
     <!-- END THEME LAYOUT SCRIPTS -->
     @yield('js')
-    
 </html>

@@ -12,5 +12,4 @@ class Invite extends Facade
     protected static function getFacadeAccessor() {
         return 'invite';
     }
-    
 }

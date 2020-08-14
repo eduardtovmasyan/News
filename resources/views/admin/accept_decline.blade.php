@@ -11,7 +11,6 @@
                 <i class=" icon-social-twitter font-dark hide"></i>
                 <span class="caption-subject font-dark bold uppercase">Accept/Decline</span>
             </div>
-            
         </div>
         <div class="portlet-body">
             <div class="tab-content">
@@ -37,8 +36,8 @@
                                     </div>
                                     <div class="mt-action-buttons ">
                                         <div class="btn-group btn-group-circle">
-                                            <button type="button" class="btn btn-outline green btn-sm profile-accept" value="{{ $pandingPanelAdmin->id }} ">Accept</button>
-                                            <button type="button" class="btn btn-outline red btn-sm profile-decline" value="{{ $pandingPanelAdmin->id }} ">Decline</button>
+                                            <button type="button" class="btn btn-outline green btn-sm profile-accept" value="{{ $pandingPanelAdmin->id }}">Accept</button>
+                                            <button type="button" class="btn btn-outline red btn-sm profile-decline" value="{{ $pandingPanelAdmin->id }}">Decline</button>
                                         </div>
                                     </div>
                                 </div>

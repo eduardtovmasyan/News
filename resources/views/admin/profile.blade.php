@@ -1,13 +1,11 @@
 @extends('../layouts.app')
 @section('content')
 <div class="page" style="min-height: 587px;">
-    <!-- BEGIN PAGE HEADER-->
     <!-- BEGIN PAGE TITLE-->
     <h1 class="page-title"> {{ Auth::user()->name }} {{ Auth::user()->surname }} | Account
     <small>user account page</small>
     </h1>
     <!-- END PAGE TITLE-->
-    <!-- END PAGE HEADER-->
     <div class="row">
         <div class="col-md-12">
             <!-- BEGIN PROFILE CONTENT -->

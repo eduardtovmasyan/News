@@ -10,7 +10,6 @@
                 <i class="icon-bubbles font-dark hide"></i>
                 <span class="caption-subject font-dark bold uppercase">Blocked Admin List</span>
             </div>
-            
         </div>
         <div class="portlet-body">
             <div class="tab-content">

@@ -12,5 +12,4 @@ class Create extends Facade
     protected static function getFacadeAccessor() {
         return 'create';
     }
-    
 }

@@ -12,5 +12,4 @@ class AdminList extends Facade
     protected static function getFacadeAccessor() {
         return 'adminlist';
     }
-    
 }

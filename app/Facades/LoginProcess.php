@@ -12,5 +12,4 @@ class LoginProcess extends Facade
     protected static function getFacadeAccessor() {
         return 'login';
     }
-    
 }

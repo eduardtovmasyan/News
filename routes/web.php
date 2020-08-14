@@ -37,7 +37,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/profile/{user_id}/block', 'ProfileAccesController@block')->name('block');
     Route::get('/profile/{user_id}/invited', 'ProfileAccesController@invited')->name('invited');
     Route::patch('/profile/{user_id}/admit', 'ProfileAccesController@admit')->name('admit');
-    // 
     Route::get('/admin/list/super','AdminListController@superAdminList')->name('admin/list/super');
     Route::get('/admin/list/panel','AdminListController@panelAdminList')->name('admin/list/panel');
     Route::get('/admin/list/blocked','AdminListController@blockedAdminList')->name('admin/list/blocked');
