@@ -34,4 +34,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/invite','InvitationController@sendInvitationMail')->name('invite');
     Route::get('/create','CreateAdminController@showCreateAdminPage')->name('create');
     Route::post('/create','CreateAdminController@store')->name('create');
+    Route::delete('/profile/{user_id}/delete','UserController@destroy')->name('delete');
 });

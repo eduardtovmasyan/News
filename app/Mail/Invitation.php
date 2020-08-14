@@ -11,15 +11,15 @@ class Invitation extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    protected  $data;
+    protected  $inviteData;
 
     /**
      * Invitation constructor.
      * @param $request
      */
-    public function __construct($request)
+    public function __construct($array)
     {
-        $this->data = $request;
+        $this->inviteData = $array;
     }
 
     /**
@@ -31,8 +31,11 @@ class Invitation extends Mailable implements ShouldQueue
     {
         return $this->view('emails.invitation')
             ->with([
-                'message' => $this->data['message'],
-                'role' => $this->data['role'],
+                'role' => $this->inviteData['role'],
+                'email' => $this->inviteData['email'],
+                'name' => $this->inviteData['name'],
+                'surname' => $this->inviteData['surname'],
+                'password' => $this->inviteData['password'],
             ]);
     }
 }

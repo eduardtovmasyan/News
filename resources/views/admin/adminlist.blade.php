@@ -153,6 +153,11 @@
                                         <li>
                                             <a href="/profile/details/{{ $acceptedPanelAdmin->id }}">View</a>
                                         </li>
+                                @if(Auth::user()->role == 'super_admin')
+                                        <li>
+                                            <a class="admin_remove" data-id="{{ $acceptedPanelAdmin->id }}" >Delete</a>
+                                        </li>
+                                @endif
                                     </ul>
                                 </div>
                             </div>

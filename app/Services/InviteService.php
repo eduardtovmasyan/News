@@ -4,7 +4,9 @@ namespace App\Services;
 
 use App\User;
 use App\Mail\Invitation;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
 class InviteService
 {
@@ -20,7 +22,22 @@ class InviteService
      */
     public function send($data)
     {
+        $password = Str::random(10);
+
+        $user = $this->userModel::create([
+            'role' => $data['role'],
+            'email' => $data['email'],
+            'password' => Hash::make($password),
+            'name' => Str::random(10),
+            'surname' => Str::random(10),
+            'is_active' => User::TYPE_ACCESS_ACCEPTED,
+        ]);
+
+        $user = $user->toArray();
+        $user['password'] = $password;
+
         Mail::to($data['email'])
-            ->queue(new Invitation($data));
+            ->queue(new Invitation($user));
+
     }
 }

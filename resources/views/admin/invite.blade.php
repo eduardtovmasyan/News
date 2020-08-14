@@ -17,12 +17,6 @@
     <div class="portlet-body form">
         <form class="form-horizontal" role="form"  method="post" action="{{ route('invite') }}">
             <div class="form-body">
-                <div class="form-group">
-                    <label class="col-md-1 control-label"><strong>Message: </strong></label>
-                    <div class="col-md-10">
-                        <input type="text" name="message" class="form-control input-lg" placeholder="Message"> </div>
-                    </div>
-                    <br>
                     <div class="form-group">
                     <span style="color: red; margin-left: 15px;">{{$errors->first('email')}}</span>
                         <label class="col-md-1 control-label"><strong>Email: </strong></label>
@@ -52,3 +46,4 @@
             </div>
         </div>
         @endsection
+        

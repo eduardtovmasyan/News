@@ -21,8 +21,7 @@
   <p class="lead"><strong>New Admin Registrated</strong> please enter admin list to change access</p>
   <br>
   <p class="lead"><strong>Name: {{$name}}</strong></p>
-  <p class="lead"><strong>Surname: {{$name}}</strong></p>
-  <p class="lead"><strong>Email: {{$name}}</strong></p>
+  <p class="lead"><strong>Surname: {{$surname}}</strong></p>
   <hr>
   <p>
     Having trouble? <a href="">Contact us</a>

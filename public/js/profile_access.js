@@ -1,17 +1,25 @@
 let token = $('#token').val()
+var t = $(this)
 
-// $.ajax({
-//     type: 'get',
-//     url: ``,
-//     headers: { '_token': token },
-//     success: function(r) {
-        
-//     }
-// });
+$(document).on('click', '.admin_remove', function() {
+  var user_id = $(this).attr('data-id')
+  var t = $(this)
+
+  $.ajax({
+    type: 'delete',
+    url: `/profile/${user_id}/delete`,
+    headers: { '_token': token },
+    success: function(r) {
+          $(t).closest('.mt-comments').remove()
+    }
+  });
+});
   
+
 $(document).on('click', '.profile-accept', function() {
 	var id = $(this).val()
-	var t = $(this)
+  var t = $(this)
+
 	$.ajax({
     	type: 'patch',
     	url: `/profile/${id}`,
@@ -45,7 +53,8 @@ $(document).on('click', '.profile-accept', function() {
 
 $(document).on('click', '.profile-decline', function() {
 	var id = $(this).val()
-	var t = $(this)
+  var t = $(this)
+
 	$.ajax({
     	type: 'patch',
     	url: `/profile/${id}`,
