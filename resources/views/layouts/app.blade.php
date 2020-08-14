@@ -98,8 +98,6 @@
                 <!-- BEGIN SIDEBAR -->
                 <div class="page-sidebar-wrapper">
                     <!-- BEGIN SIDEBAR -->
-                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                     <div class="page-sidebar navbar-collapse collapse">
                         <!-- BEGIN SIDEBAR MENU -->
                         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
@@ -134,12 +132,34 @@
                                     </li>
                                     @endif
                                     <li class="nav-item start ">
-                                        <a href="{{ url('admin-list') }}" class="nav-link ">
+                                        <a href="{{ url('admin/list/super') }}" class="nav-link ">
                                             <i class="icon-bulb"></i>
-                                            <span class="title">Admin List</span>
+                                            <span class="title">Super Admin List</span>
                                         </a>
                                     </li>
-                                    
+
+                                    <li class="nav-item start ">
+                                        <a href="{{ url('admin/list/panel') }}" class="nav-link ">
+                                            <i class="icon-bulb"></i>
+                                            <span class="title">Panel Admin List</span>
+                                        </a>
+                                    </li>
+
+                                    @if(Auth::user()->role == 'super_admin')
+                                    <li class="nav-item start ">
+                                        <a href="{{ url('admin/list/accept-decline') }}" class="nav-link ">
+                                            <i class="icon-bulb"></i>
+                                            <span class="title">ACCEPT/DECLINE</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item start ">
+                                        <a href="{{ url('admin/list/blocked') }}" class="nav-link ">
+                                            <i class="icon-bulb"></i>
+                                            <span class="title">Blocked Admin List</span>
+                                        </a>
+                                    </li>
+                                    @endif
                                 </ul>
                             </li>
                         </ul>

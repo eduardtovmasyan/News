@@ -17,6 +17,6 @@ class CreateAdminController extends Controller
     {
         $users = Create::store($request);
         
-        return redirect()->route('admin-list');
+        return redirect()->route('home');
     }
 }

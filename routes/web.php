@@ -27,7 +27,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profile','ProfileController@showProfilePage')->name('profile');
     Route::post('/profile/details','ProfileController@details')->name('profile/details');
     Route::post('/profile/password','ProfileController@changePassword')->name('profile/password');
-    Route::get('/admin-list','AdminListController@adminList')->name('admin-list');
     Route::patch('/profile/{user_id}', 'ProfileAccesController@access');
     Route::get('/profile/details/{user_id}','ProfileController@showProfilePageDetails')->name('user_details');
     Route::get('/invite','InvitationController@showInvitationPage')->name('invite');
@@ -38,4 +37,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/profile/{user_id}/block', 'ProfileAccesController@block')->name('block');
     Route::get('/profile/{user_id}/invited', 'ProfileAccesController@invited')->name('invited');
     Route::patch('/profile/{user_id}/admit', 'ProfileAccesController@admit')->name('admit');
+    // 
+    Route::get('/admin/list/super','AdminListController@superAdminList')->name('admin/list/super');
+    Route::get('/admin/list/panel','AdminListController@panelAdminList')->name('admin/list/panel');
+    Route::get('/admin/list/blocked','AdminListController@blockedAdminList')->name('admin/list/blocked');
+    Route::get('/admin/list/accept-decline','AdminListController@acceptDecline')->name('admin-list/accept-decline');
 });
