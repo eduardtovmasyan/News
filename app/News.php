@@ -27,6 +27,11 @@ class News extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+
     public function images()
     {
         return $this->hasMany(Image::class);
