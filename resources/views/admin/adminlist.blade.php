@@ -1,12 +1,8 @@
 @extends('../layouts.app')
 @section('content')
-<!-- BEGIN PAGE HEADER-->
-<!-- BEGIN PAGE TITLE-->
 <h1 class="page-title" > Admins List | Admins
 <small></small>
 </h1>
-<!-- END PAGE TITLE-->
-<!-- END PAGE HEADER-->
 @if(Auth::user()->role == 'super_admin')
 <div class="col" style="margin-top: 50px">
     <div class="portlet light bordered">

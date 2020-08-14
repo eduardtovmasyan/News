@@ -15,7 +15,7 @@ class InviteValidationRequest extends Request
     {
         return [
             'role' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
         ];
     }
 }

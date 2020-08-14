@@ -18,7 +18,8 @@
         <link href="{{ asset('assets/global/css/components-rtl.min.css')}} " rel="stylesheet" id="style_components" type="text/css" />
         <link href="{{ asset('assets/global/css/plugins-rtl.min.css')}} " rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/pages/css/login-5-rtl.min.css')}} " rel="stylesheet" type="text/css" />
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="favicon.ico" />
+    </head>
         @yield('content')
         <script src=" {{ asset('assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
         <script src=" {{ asset('assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>

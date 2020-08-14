@@ -37,58 +37,58 @@
                                             <div class="form-group">
                                                 <label class="control-label">First Name</label>
                                                 <br>
-                                                    <span style="color: red">{{$errors->first('name')}}</span><br>
-                                                <input type="text" placeholder="{{ Auth::user()->name }}" class="form-control" name="name" value="{{ Auth::user()->name }}"> 
+                                                <span style="color: red">{{$errors->first('name')}}</span><br>
+                                                <input type="text" placeholder="{{ Auth::user()->name }}" class="form-control" name="name" value="{{ Auth::user()->name }}">
                                             </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Last Name</label>
+                                                <br>
+                                                <span style="color: red">{{$errors->first('surname')}}</span><br>
+                                                <input type="text" placeholder="{{ Auth::user()->surname }}" class="form-control" name="surname" value="{{ Auth::user()->surname }}"> </div>
                                                 <div class="form-group">
-                                                    <label class="control-label">Last Name</label>
+                                                    <label class="control-label">Email</label>
                                                     <br>
-                                                        <span style="color: red">{{$errors->first('surname')}}</span><br>
-                                                    <input type="text" placeholder="{{ Auth::user()->surname }}" class="form-control" name="surname" value="{{ Auth::user()->surname }}"> </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Email</label>
-                                                        <br>
-                                                            <span style="color: red">{{$errors->first('email')}}</span><br>
-                                                        <input type="email" placeholder="{{ Auth::user()->email }}" class="form-control" name="email" value="{{ Auth::user()->email }}"> </div>
-                                                        <div class="margiv-top-10">
-                                                            <button class="btn green"> Save Changes </button>
-                                                        </div>
-                                                        {{ csrf_field() }}
-                                                    </form>
-                                                </div>
-                                                <!-- END PERSONAL INFO TAB -->
-                                                <!-- CHANGE PASSWORD TAB -->
-                                                <div class="tab-pane" id="tab_1_3">
-                                                    <form action="{{ url('/profile/password') }}" method="post">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Current Password</label>
-                                                            <br>
-                                                    <span style="color: red">{{$errors->first('password')}}</span><br>
-                                                            <input type="password" class="form-control" name="password"> </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label">New Password</label>
-                                                                <br>
-                                                                <input type="password" class="form-control" name="newPassword"> </div>
-                                                                <div class="margin-top-10">
-                                                                    <button class="btn green"> Change Password </button>
-                                                                    <a href="javascript:;" class="btn default"> Cancel </a>
-                                                                </div>
-                                                            {{ csrf_field() }}
-                                                            </form>
-                                                        </div>
-                                                        <!-- END CHANGE PASSWORD TAB -->
+                                                    <span style="color: red">{{$errors->first('email')}}</span><br>
+                                                    <input type="email" placeholder="{{ Auth::user()->email }}" class="form-control" name="email" value="{{ Auth::user()->email }}"> </div>
+                                                    <div class="margiv-top-10">
+                                                        <button class="btn green"> Save Changes </button>
                                                     </div>
+                                                    {{ csrf_field() }}
+                                                </form>
+                                            </div>
+                                            <!-- END PERSONAL INFO TAB -->
+                                            <!-- CHANGE PASSWORD TAB -->
+                                            <div class="tab-pane" id="tab_1_3">
+                                                <form action="{{ url('/profile/password') }}" method="post">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Current Password</label>
+                                                        <br>
+                                                        <span style="color: red">{{$errors->first('password')}}</span><br>
+                                                        <input type="password" class="form-control" name="password"> </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">New Password</label>
+                                                            <br>
+                                                            <input type="password" class="form-control" name="newPassword"> </div>
+                                                            <div class="margin-top-10">
+                                                                <button class="btn green"> Change Password </button>
+                                                                <a href="javascript:;" class="btn default"> Cancel </a>
+                                                            </div>
+                                                            {{ csrf_field() }}
+                                                        </form>
+                                                    </div>
+                                                    <!-- END CHANGE PASSWORD TAB -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- END PROFILE CONTENT -->
                             </div>
+                            <!-- END PROFILE CONTENT -->
                         </div>
                     </div>
-                    @endsection
-                    @section('css')
-                    @endsection
-                    @section('js')
-                    @endsection
+                </div>
+                @endsection
+                @section('css')
+                @endsection
+                @section('js')
+                @endsection

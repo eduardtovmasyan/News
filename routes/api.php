@@ -19,7 +19,3 @@ use Illuminate\Support\Facades\Route;
     //     'only' => ['index', 'store', 'show', 'update', 'destroy']
     // ]);
 // });
-
-    Route::resource('user', 'UserController', [
-        'only' => ['index', 'store', 'show', 'update', 'destroy']
-    ]);

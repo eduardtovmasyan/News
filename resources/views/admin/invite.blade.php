@@ -17,33 +17,32 @@
     <div class="portlet-body form">
         <form class="form-horizontal" role="form"  method="post" action="{{ route('invite') }}">
             <div class="form-body">
-                    <div class="form-group">
+                <div class="form-group">
                     <span style="color: red; margin-left: 15px;">{{$errors->first('email')}}</span>
-                        <label class="col-md-1 control-label"><strong>Email: </strong></label>
+                    <label class="col-md-1 control-label"><strong>Email: </strong></label>
+                    <div class="col-md-10">
+                        <input type="email" name="email" class="form-control input-lg" placeholder="Email"> </div>
+                    </div>
+                    <br>
+                    
+                    <div class="form-group">
+                        <span style="color: red; margin-left: 15px;">{{$errors->first('confirm_password')}}</span>
+                        <label class="col-md-1 control-label"><strong>Role: </strong></label>
                         <div class="col-md-10">
-                            <input type="email" name="email" class="form-control input-lg" placeholder="Email"> </div>
-                        </div>
-                        <br>
-                        
-                        <div class="form-group">
-                    <span style="color: red; margin-left: 15px;">{{$errors->first('confirm_password')}}</span>
-                            <label class="col-md-1 control-label"><strong>Role: </strong></label>
-                            <div class="col-md-10">
-                                <select name="role" class="form-control input-lg">
-                                    <option disabled="" selected="">Please Choose A Role</option>
-                                    <option value="super_admin">Super Admin</option>
-                                    <option value="panel_admin">Panel Admin</option>
-                                </select>
-                            </div>
+                            <select name="role" class="form-control input-lg">
+                                <option disabled="" selected="">Please Choose A Role</option>
+                                <option value="super_admin">Super Admin</option>
+                                <option value="panel_admin">Panel Admin</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="form-actions right1" dir="rtl">
-                        {{csrf_field()}}
-                        <a href="{{ route('home') }}" type="button" class="btn default">Cancel</a>
-                        <button type="submit" class="btn green">Invite</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="form-actions right1" dir="rtl">
+                    {{csrf_field()}}
+                    <a href="{{ route('home') }}" type="button" class="btn default">Cancel</a>
+                    <button type="submit" class="btn green">Invite</button>
+                </div>
+            </form>
         </div>
-        @endsection
-        
+    </div>
+    @endsection

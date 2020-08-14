@@ -10,14 +10,13 @@
                     <h1>News LLC Admin Login</h1>
                     <p> Lorem ipsum dolor sit amet, coectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat. Lorem ipsum dolor sit amet, coectetuer adipiscing. </p>
                     <form action="{{ route('login') }}" class="login-form" method="post">
-                       
+                        
                         <div class="alert alert-danger display-hide">
                             <button class="close" data-close="alert"></button>
                             <br>
                             <span>{{$errors->first('email')}}</span><br>
                             <span>{{$errors->first('password')}}</span><br>
                         </div>
-
                         <div class="row">
                             <div class="col-xs-6">
                                 <input class="form-control form-control-solid placeholder-no-fix form-group" value="{{old('password')}}" type="password" autocomplete="off" placeholder="Password" name="password"/> </div>
