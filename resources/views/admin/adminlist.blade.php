@@ -157,6 +157,10 @@
                                         <li>
                                             <a class="admin_remove" data-id="{{ $acceptedPanelAdmin->id }}" >Delete</a>
                                         </li>
+
+                                        <li>
+                                            <a class="admin_block" data-id="{{ $acceptedPanelAdmin->id }}" style="color: red">Block</a>
+                                        </li>
                                 @endif
                                     </ul>
                                 </div>

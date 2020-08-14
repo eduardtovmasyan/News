@@ -15,4 +15,22 @@ class ProfileAccesController extends Controller
     {
         return UserDetails::access($request, $user_id);
     }
+
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function block($user_id)
+    {
+        return UserDetails::block($user_id);
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function invited($user_id)
+    {
+        UserDetails::invited($user_id);
+        
+        return redirect()->route('login');
+    }
 }

@@ -31,6 +31,7 @@ class Invitation extends Mailable implements ShouldQueue
     {
         return $this->view('emails.invitation')
             ->with([
+                'user_id' => $this->inviteData['id'],
                 'role' => $this->inviteData['role'],
                 'email' => $this->inviteData['email'],
                 'name' => $this->inviteData['name'],

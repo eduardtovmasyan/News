@@ -19,6 +19,7 @@ class User extends Authenticatable
     const TYPE_ACCESS_PANDING = 'panding';
     const TYPE_ACCESS_ACCEPTED = 'accepted';
     const TYPE_ACCESS_DENIED = 'denied';
+    const TYPE_ACCESS_INVITED = 'invited';
 
     /**
      * @var int

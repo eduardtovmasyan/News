@@ -29,6 +29,8 @@
   <p>
     Having trouble? <a href="">Contact us</a>
   </p>
+<br>
+  <a href="http://news.test/profile/{{$user_id}}/invited" class="btn btn-success">Confirm</a>
 </div>
 </body>
 </html>

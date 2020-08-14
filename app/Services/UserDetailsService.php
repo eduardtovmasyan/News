@@ -54,4 +54,26 @@ class UserDetailsService
         return $user;
     }
 
+    public function block($user_id)
+    {   
+        $user = $this->userModel::findOrFail($user_id);
+
+        $user->update([
+            'is_active' => $this->userModel::TYPE_ACCESS_DENIED,
+        ]); 
+
+        return $user;
+    }
+
+    public function invited($user_id)
+    {   
+        $user = $this->userModel::findOrFail($user_id);
+
+        $user->update([
+            'is_active' => $this->userModel::TYPE_ACCESS_ACCEPTED,
+        ]); 
+
+        return $user;
+    }
+
 }

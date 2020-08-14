@@ -30,7 +30,7 @@ class InviteService
             'password' => Hash::make($password),
             'name' => Str::random(10),
             'surname' => Str::random(10),
-            'is_active' => User::TYPE_ACCESS_ACCEPTED,
+            'is_active' => User::TYPE_ACCESS_INVITED,
         ]);
 
         $user = $user->toArray();

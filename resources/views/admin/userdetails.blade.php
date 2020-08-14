@@ -3,7 +3,8 @@
 <!-- BEGIN PAGE HEADER-->
 <!-- BEGIN PAGE TITLE-->
 <h1 class="page-title" > {{ $user->name }} {{ $user->surname }} | {{ $user->role }}
-<small></small>
+<small> &nbsp <span class="badge badge-success"> {{ $user->is_active }}</span>
+</small>
 </h1>
 <!-- END PAGE TITLE-->
 <!-- END PAGE HEADER-->
