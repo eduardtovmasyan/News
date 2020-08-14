@@ -21,41 +21,35 @@
                 </div>
                 <div class="portlet-body form">
                     <div class="caption">
-                        <span class="caption-subject bold font-green uppercase">{{ $message }}</span>
                     </div>
                     <form class="form-horizontal" role="form" method="post" action="{{ route('create') }}">
                         <div class="form-body">
                             <input type="hidden" name="role" value="{{ $role }}">
                             <div class="form-group">
-                                <span style="color: red; margin-left: 15px;">{{$errors->first('name')}}</span>
                                 <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Name: </strong></label>
                                 <div class="col-md-10">
                                     <input type="text" name="name" class="form-control input-lg" placeholder="Name" value="{{old('name')}}"> </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <span style="color: red; margin-left: 15px;">{{$errors->first('surname')}}</span>
                                     <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Surname: </strong></label>
                                     <div class="col-md-10">
                                         <input type="text" name="surname" class="form-control input-lg" placeholder="Surname" value="{{old('surname')}}"> </div>
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <span style="color: red; margin-left: 15px;">{{$errors->first('email')}}</span>
                                         <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Email: </strong></label>
                                         <div class="col-md-10">
                                             <input type="email" name="email" class="form-control input-lg" placeholder="Email" value="{{old('email')}}"> </div>
                                         </div>
                                         <br>
                                         <div class="form-group">
-                                            <span style="color: red; margin-left: 15px;">{{$errors->first('password')}}</span>
                                             <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Password: </strong></label>
                                             <div class="col-md-10">
                                                 <input type="password" name="password" class="form-control input-lg" placeholder="Password"> </div>
                                             </div>
                                             <br>
                                             <div class="form-group">
-                                                <span style="color: red; margin-left: 15px;">{{$errors->first('confirm_password')}}</span>
                                                 <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Confirm Password: </strong></label>
                                                 <div class="col-md-10">
                                                     <input type="password" name="confirm_password" class="form-control input-lg" placeholder="Confirm Password"> </div>

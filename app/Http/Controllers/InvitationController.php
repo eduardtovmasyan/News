@@ -17,7 +17,11 @@ class InvitationController extends Controller
 
     public function sendInvitationMail(InviteValidationRequest $request)
     {
-        Invite::send($request);
+        $req = $request->toArray();
+
+        Invite::send($req);
+
+        return redirect()->route('invite');
     }
 
     public function store(CreateAdminValidationRequest $request)
