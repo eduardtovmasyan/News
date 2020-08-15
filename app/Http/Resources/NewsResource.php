@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class NewsResource extends JsonResource
@@ -16,8 +17,12 @@ class NewsResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'title' => $this->title,
             'news' => $this->news,
-            'user_id' => $this->user_id,
+            'type' => TypeResource::make($this->type),
+            // 'author' => UserResource::make($this->author),
+            // 'images' => FileResource::make($this->images),
+            // 'files' => FileResource::make($this->files),
             'create_at' => $this->create_at,
             'update_at' => $this->update_at,
         ];

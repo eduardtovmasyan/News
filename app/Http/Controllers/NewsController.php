@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use News;
+use App\Type;
 use Illuminate\Http\Request;
+use App\Http\Resources\NewsResource;
+use App\Http\Requests\NewsValidateRequest;
 
 class NewsController extends Controller
 {
+    public function showPostNewsPage()
+    {
+        $types = Type::all();
+
+        return view('admin.post_news')
+            ->with('types', $types);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +33,11 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsValidateRequest $request)
     {
-        //
+        $news = News::store($request);
+
+        return NewsResource::make($news);
     }
 
     /**

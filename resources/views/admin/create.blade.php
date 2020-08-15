@@ -19,9 +19,9 @@
             <div class="form-body">
                 <div class="form-group">
                     <span style="color: red; margin-left: 15px;">{{$errors->first('role')}}</span>
-                    <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Role: </strong></label>
+                    <label class="col-md-2 control-label" style="margin-top: 10px" ><strong>Role: </strong></label>
                     <div class="col-md-10">
-                        <select name="role" class="form-control input-lg">
+                        <select name="role" class="form-control">
                             <option disabled="" selected="">Please Choose A Role</option>
                             <option value="super_admin">Super Admin</option>
                             <option value="panel_admin">Panel Admin</option>
@@ -31,37 +31,37 @@
                 <br>
                 <div class="form-group">
                     <span style="color: red; margin-left: 15px;">{{$errors->first('name')}}</span>
-                    <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Name: </strong></label>
+                    <label class="col-md-2 control-label" style="margin-top: 10px" ><strong>Name: </strong></label>
                     <div class="col-md-10">
-                        <input type="text" name="name" class="form-control input-lg" placeholder="Name" value="{{old('name')}}"> </div>
+                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{old('name')}}"> </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <span style="color: red; margin-left: 15px;">{{$errors->first('surname')}}</span>
-                        <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Surname: </strong></label>
+                        <label class="col-md-2 control-label" style="margin-top: 10px" ><strong>Surname: </strong></label>
                         <div class="col-md-10">
-                            <input type="text" name="surname" class="form-control input-lg" placeholder="Surname" value="{{old('surname')}}"> </div>
+                            <input type="text" name="surname" class="form-control" placeholder="Surname" value="{{old('surname')}}"> </div>
                         </div>
                         <br>
                         <div class="form-group">
                             <span style="color: red; margin-left: 15px;">{{$errors->first('email')}}</span>
-                            <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Email: </strong></label>
+                            <label class="col-md-2 control-label" style="margin-top: 10px" ><strong>Email: </strong></label>
                             <div class="col-md-10">
-                                <input type="email" name="email" class="form-control input-lg" placeholder="Email" value="{{old('email')}}"> </div>
+                                <input type="email" name="email" class="form-control" placeholder="Email" value="{{old('email')}}"> </div>
                             </div>
                             <br>
                             <div class="form-group">
                                 <span style="color: red; margin-left: 15px;">{{$errors->first('password')}}</span>
-                                <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Password: </strong></label>
+                                <label class="col-md-2 control-label" style="margin-top: 10px" ><strong>Password: </strong></label>
                                 <div class="col-md-10">
-                                    <input type="password" name="password" class="form-control input-lg" placeholder="Password"> </div>
+                                    <input type="password" name="password" class="form-control" placeholder="Password"> </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <span style="color: red; margin-left: 15px;">{{$errors->first('confirm_password')}}</span>
-                                    <label class="col-md-2 control-label" style="margin-top: 25px" ><strong>Confirm Password: </strong></label>
+                                    <label class="col-md-2 control-label" style="margin-top: 10px" ><strong>Confirm Password: </strong></label>
                                     <div class="col-md-10">
-                                        <input type="password" name="confirm_password" class="form-control input-lg" placeholder="Confirm Password"> </div>
+                                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password"> </div>
                                     </div>
                                 </div>
                                 <div class="form-actions right1" dir="rtl">

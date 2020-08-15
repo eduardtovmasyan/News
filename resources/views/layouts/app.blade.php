@@ -105,7 +105,7 @@
                             <li class="nav-item start active open">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="icon-home"></i>
-                                    <span class="title">Dashboard</span>
+                                    <span class="title">Admin Dashboard</span>
                                     <span class="selected"></span>
                                     <span class="arrow open"></span>
                                 </a>
@@ -154,6 +154,33 @@
                                 </ul>
                             </li>
                         </ul>
+<!-- start news -->
+                        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+                            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                            <li class="sidebar-toggler-wrapper hide">
+                                <div class="sidebar-toggler">
+                                    <span></span>
+                                </div>
+                            </li>
+                            <!-- END SIDEBAR TOGGLER BUTTON -->
+                            <li class="nav-item start active open">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="fa fa-newspaper-o"></i>
+                                    <span class="title">News Dashboard</span>
+                                    <span class="selected"></span>
+                                    <span class="arrow open"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item start ">
+                                        <a href="{{ route('post') }}" class="nav-link ">
+                                            <i class="fa fa-plus-circle"></i>
+                                            <span class="title">Post The Latest News</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- end news -->
                         <!-- END SIDEBAR MENU -->
                         <!-- END SIDEBAR MENU -->
                     </div>

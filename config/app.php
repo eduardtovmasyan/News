@@ -185,6 +185,7 @@ return [
         App\Providers\AdminListServiceProvider::class,
         App\Providers\InviteServiceProvider::class,
         App\Providers\CreateServiceProvider::class,
+        App\Providers\NewsServiceProvider::class,
 
     ],
 
@@ -244,6 +245,7 @@ return [
         'AdminList' => App\Facades\AdminList::class,
         'Invite' => App\Facades\Invite::class,
         'Create' => App\Facades\Create::class,
+        'News' => App\Facades\News::class,
     ],
 
 ];

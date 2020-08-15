@@ -10,9 +10,9 @@ class NotificationService
 {
     protected  $userModel;
 
-    function __construct()
+    function __construct(User $userModel)
     {
-        $this->userModel = new User();
+        $this->userModel = $userModel;
     }
 
     public function send($array)

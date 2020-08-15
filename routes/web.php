@@ -40,5 +40,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/admin/list/super','AdminListController@superAdminList')->name('admin/list/super');
     Route::get('/admin/list/panel','AdminListController@panelAdminList')->name('admin/list/panel');
     Route::get('/admin/list/blocked','AdminListController@blockedAdminList')->name('admin/list/blocked');
-    Route::get('/admin/list/accept-decline','AdminListController@acceptDecline')->name('admin-list/accept-decline');
+    Route::get('/admin/list/accept-decline','AdminListController@acceptDecline')->name('admin/list/accept-decline');
+    Route::get('/post','NewsController@showPostNewsPage')->name('post');
+    Route::post('/post','NewsController@store')->name('post');
 });

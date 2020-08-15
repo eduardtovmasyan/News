@@ -19,7 +19,7 @@ class News extends Model
      * @var array
      */
     protected $fillable = [
-        'news', 'user_id',
+        'news', 'title', 'type_id', 'author',
     ];
 
     public function users()
@@ -40,5 +40,10 @@ class News extends Model
     public function files()
     {
         return $this->hasMany(File::class);
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author', 'id');
     }
 }
