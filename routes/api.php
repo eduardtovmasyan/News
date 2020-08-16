@@ -19,3 +19,6 @@ use Illuminate\Support\Facades\Route;
     //     'only' => ['index', 'store', 'show', 'update', 'destroy']
     // ]);
 // });
+// Route::resource('news', 'NewsController', [
+//         'only' => ['index', 'store', 'show', 'update', 'destroy']
+// ]);

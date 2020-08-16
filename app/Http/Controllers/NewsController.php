@@ -6,6 +6,7 @@ use News;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Resources\NewsResource;
+use App\Http\Resources\NewsShortResource;
 use App\Http\Requests\NewsValidateRequest;
 
 class NewsController extends Controller
@@ -16,6 +17,27 @@ class NewsController extends Controller
 
         return view('admin.post_news')
             ->with('types', $types);
+    }
+
+    public function showMyNewsPage()
+    {
+        $types = Type::all();
+
+        $news = News::index();
+        $news = NewsShortResource::collection($news);
+
+        return view('admin.news')
+            ->with('types', $types)
+            ->with('news', $news);
+    }
+
+    public function showNewsDetailsPage($news_id)
+    {
+        $news = News::show($news_id);
+        $news = NewsResource::make($news);
+
+        return view('admin.news_details')
+            ->with('news', $news);
     }
     /**
      * Display a listing of the resource.
@@ -46,9 +68,11 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($news_id)
     {
-        //
+        $news = News::show($news_id);
+
+        return NewsResource::make($news);
     }
 
     /**

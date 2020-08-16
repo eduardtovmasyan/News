@@ -19,7 +19,9 @@ class NewsService implements NewsInterface
 
     public function index()
     {
-        return $this->news::paginate(5);
+        return $this->news::where('author', Auth::id())
+        // ->orWhere()
+        ->paginate(6);
     }
 
     public function store($request) 

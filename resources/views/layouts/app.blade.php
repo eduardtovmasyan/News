@@ -30,6 +30,7 @@
         <link href="{{ asset('assets/layouts/layout/css/themes/darkblue.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
         <link href="{{ asset('assets/layouts/layout/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
         @yield('css')
+        
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" />
     </head>
@@ -175,6 +176,13 @@
                                         <a href="{{ route('post') }}" class="nav-link ">
                                             <i class="fa fa-plus-circle"></i>
                                             <span class="title">Post The Latest News</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item start ">
+                                        <a href="{{ route('news') }}" class="nav-link ">
+                                            <i class="fa fa-clipboard"></i>
+                                            <span class="title">News</span>
                                         </a>
                                     </li>
                                 </ul>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class NewsResource extends JsonResource
+class NewsShortResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +18,7 @@ class NewsResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'news' => $this->news,
+            'news' => Str::limit($this->news, 50, '...'),
             'type' => TypeResource::make($this->type),
             // 'author' => UserResource::make($this->author),
             'images' => FileResource::collection($this->images),

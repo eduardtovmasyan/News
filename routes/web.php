@@ -43,4 +43,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/admin/list/accept-decline','AdminListController@acceptDecline')->name('admin/list/accept-decline');
     Route::get('/post','NewsController@showPostNewsPage')->name('post');
     Route::post('/post','NewsController@store')->name('post');
+    Route::get('/news','NewsController@showMyNewsPage')->name('news');
+    Route::get('/news/{news_id}','NewsController@showNewsDetailsPage');
 });
