@@ -20,7 +20,7 @@ class NewsResource extends JsonResource
             'title' => $this->title,
             'news' => $this->news,
             'type' => TypeResource::make($this->type),
-            // 'author' => UserResource::make($this->author),
+            'author' => UserResource::make($this->creator),
             'images' => FileResource::collection($this->images),
             'files' => FileResource::collection($this->files),
             'create_at' => $this->create_at,

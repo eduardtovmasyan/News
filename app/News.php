@@ -24,7 +24,7 @@ class News extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'news_users', 'news_id', 'user_id');
     }
 
     public function type()
@@ -42,8 +42,8 @@ class News extends Model
         return $this->hasMany(File::class);
     }
 
-    public function author()
+    public function creator()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author', 'id');
     }
 }

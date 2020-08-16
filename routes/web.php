@@ -45,4 +45,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/post','NewsController@store')->name('post');
     Route::get('/news','NewsController@showMyNewsPage')->name('news');
     Route::get('/news/{news_id}','NewsController@showNewsDetailsPage');
+    Route::get('api/news', 'NewsController@index');
 });

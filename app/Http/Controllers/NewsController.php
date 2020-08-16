@@ -6,7 +6,6 @@ use News;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Resources\NewsResource;
-use App\Http\Resources\NewsShortResource;
 use App\Http\Requests\NewsValidateRequest;
 
 class NewsController extends Controller
@@ -14,21 +13,21 @@ class NewsController extends Controller
     public function showPostNewsPage()
     {
         $types = Type::all();
+        $editors = News::editors();
 
         return view('admin.post_news')
-            ->with('types', $types);
+            ->with('types', $types)
+            ->with('editors', $editors);
     }
 
     public function showMyNewsPage()
     {
         $types = Type::all();
-
         $news = News::index();
-        $news = NewsShortResource::collection($news);
 
         return view('admin.news')
-            ->with('types', $types)
-            ->with('news', $news);
+            ->with('news', $news)
+            ->with('types', $types);
     }
 
     public function showNewsDetailsPage($news_id)
@@ -46,7 +45,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::index();
+
+        return NewsResource::collection($news);
     }
 
     /**
@@ -59,7 +60,7 @@ class NewsController extends Controller
     {
         $news = News::store($request);
 
-        return NewsResource::make($news);
+        return redirect()->route('news');
     }
 
     /**

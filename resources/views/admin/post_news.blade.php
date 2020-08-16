@@ -33,35 +33,48 @@
                     <div class="col-md-11">
                         <input type="text" name="title" class="form-control" placeholder="Title" value="{{old('title')}}"> </div>
                     </div>
+                    
                     <br>
                     <div class="form-group">
-                        <span style="color: red; margin-left: 15px;">{{$errors->first('news')}}</span>
-                        <label class="col-md-1 control-label" style="margin-top: 10px" ><strong>News: </strong></label>
+                        <span style="color: red; margin-left: 15px;">{{$errors->first('images')}}</span>
+                        <label class="col-md-1 control-label" style="margin-top: 10px" ><strong>Images: </strong></label>
                         <div class="col-md-11">
-                            <textarea name="news" class="form-control" value="{{old('news')}}"></textarea>
+                            <input type="file" name="images[]" multiple class="form-control" value="{{old('images')}}"></div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                    <span style="color: red; margin-left: 15px;">{{$errors->first('images')}}</span>
-                    <label class="col-md-1 control-label" style="margin-top: 10px" ><strong>Images: </strong></label>
-                    <div class="col-md-11">
-                        <input type="file" name="images[]" multiple class="form-control" value="{{old('images')}}"></div>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                    <span style="color: red; margin-left: 15px;">{{$errors->first('images')}}</span>
-                    <label class="col-md-1 control-label" style="margin-top: 10px" ><strong>Files: </strong></label>
-                    <div class="col-md-11">
-                        <input type="file" name="files[]" multiple class="form-control" value="{{old('files')}}"></div>
-                    </div>
+                        <br>
+                        <div class="form-group">
+                            <span style="color: red; margin-left: 15px;">{{$errors->first('images')}}</span>
+                            <label class="col-md-1 control-label" style="margin-top: 10px" ><strong>Files: </strong></label>
+                            <div class="col-md-11">
+                                <input type="file" name="files[]" multiple class="form-control" value="{{old('files')}}"></div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <span style="color: red; margin-left: 15px;">{{$errors->first('editors')}}</span>
+                                <label class="col-md-1 control-label" style="margin-top: 10px" ><strong>Editors: </strong></label>
+                                <div class="col-md-11">
+                                    <select name="editors[]" class="form-control" multiple="">
+                                        @foreach($editors as $editor)
+                                        <option value="{{ $editor->id }}">{{ $editor->name }} {{ $editor->surname }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <span style="color: red; margin-left: 15px;">{{$errors->first('news')}}</span>
+                                <label class="col-md-1 control-label" style="margin-top: 10px" ><strong>News: </strong></label>
+                                <div class="col-md-11">
+                                    <textarea name="news" rows="10" class="form-control" value="{{old('news')}}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions right1" dir="rtl">
+                            {{csrf_field()}}
+                            <a href="{{ route('home') }}" type="button" class="btn default">Cancel</a>
+                            <button type="submit" class="btn green">Post</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-actions right1" dir="rtl">
-                    {{csrf_field()}}
-                    <a href="{{ route('home') }}" type="button" class="btn default">Cancel</a>
-                    <button type="submit" class="btn green">Post</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    @endsection
+            </div>
+            @endsection

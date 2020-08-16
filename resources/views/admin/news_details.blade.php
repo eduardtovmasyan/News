@@ -13,14 +13,14 @@
                 <span class="caption-helper">{{ $news->type->type }}</span>
             </div>
             <div class="mt-author" style="float: right;">
-                                <div class="mt-avatar">
-                                    <img src="{{ asset('/assets/pages/media/users/user.png') }}">
-                                </div>
-                                <div class="mt-author-name">
-                                    <a href="javascript:;" class="font-blue-madison">{{ $news->author }}</a>
-                                </div>
-                                <div class="mt-author-datetime font-grey-mint">{{ $news->created_at }}</div>
-                            </div>
+                <div class="mt-avatar">
+                    <img src="{{ asset('/assets/pages/media/users/user.png') }}">
+                </div>
+                <div class="mt-author-name">
+                    <a href="javascript:;" class="font-blue-madison">{{ $news->author }}</a>
+                </div>
+                <div class="mt-author-datetime font-grey-mint">{{ $news->created_at }}</div>
+            </div>
         </div>
         <div class="portlet-body">
             <div class="mt-timeline-horizontal loaded" data-spacing="60">
