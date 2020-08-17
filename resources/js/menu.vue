@@ -1,21 +1,24 @@
 <template>
 <div>
-  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Active</a>
+  <nav class="navbar bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#x">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="x">
+    <ul class="nav navbar-nav" style="visibility: visible;">
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:void(0)">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="javascript:void(0)">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+        <a class="nav-link" href="javascript:void(0)">Link</a>
+      </li>    
     </ul>
-  </nav>
+  </div>  
+</nav>
 
   <router-view></router-view>
 
