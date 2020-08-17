@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::group(['middleware' => ['logouted']], function() {
     Route::get('/','LoginController@showLoginForm');
     Route::get('/login','LoginController@showLoginForm');
@@ -46,7 +35,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/news','NewsController@showMyNewsPage')->name('news');
     Route::get('/news/{news_id}','NewsController@showNewsDetailsPage');
     Route::get('api/news', 'NewsController@index');
-    // 
     // Route::post('newsfilter/{filter_id}', 'NewsController@filter');
     Route::post('news/{news/id}/info', 'NewsController@edit');
     Route::get('/news/{news_id}/update','NewsController@showNewsInfoUpdatePage');
@@ -57,5 +45,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/news/{news_id}/editors/update','NewsController@showNewsEditorsUpdatePage');
     Route::post('/news/{news_id}/editors/update','NewsController@addEditors');
     Route::post('/news/{news_id}/delete/editor','NewsController@editorDelete');
-
+    // Route::get('/articles/exportCSV','PostsController@exportCSV');
 });
+
+Route::get('/{any}', function () {
+    return view('main');
+})->where('any','.*');

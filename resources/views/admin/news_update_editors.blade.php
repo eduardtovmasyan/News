@@ -16,7 +16,9 @@
     <div class="portlet-body form">
         <div class="portlet-body">
             <div class="row" style="padding: 10px 10px">
+                <?php $arr = [] ?>
                 @foreach($admins as $admin)
+                <?php array_push($arr, $admin->id) ?>
                 <div class="col-md-4 editorContainer" style="margin-top: 10px">
                     <!--begin: widget 1-3 -->
                     <div class="mt-widget-1">
@@ -46,7 +48,7 @@
                     <div class="col-md-11">
                         <select name="editors[]" class="form-control" multiple="">
                             @foreach($editors as $editor)
-                            <option value="{{ $editor->id }}">{{ $editor->name }} {{ $editor->surname }}</option>
+                                    <option value="{{ $editor->id }}">{{ $editor->name }} {{ $editor->surname }}</option>
                             @endforeach
                         </select>
                     </div>

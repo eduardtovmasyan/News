@@ -6,6 +6,7 @@ use News;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Resources\NewsResource;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\NewsValidateRequest;
 use App\Http\Requests\NewsUpdateValidationRequest;
 
@@ -94,14 +95,14 @@ class NewsController extends Controller
     {
         $news = News::addImg($request, $news_id);
         
-        return redirect()->route('news/'.$news_id.'/images/update');
+        return Redirect::to('news/update/images/'.$news_id);
     }
 
     public function addEditors(Request $request, $news_id)
     {
         $news = News::addEditors($request, $news_id);
         
-        return redirect()->route('news/'.$news_id.'/editors/update');
+        return Redirect::to('news/'.$news_id.'/editors/update');
     }
     /**
      * Display a listing of the resource.
@@ -137,7 +138,7 @@ class NewsController extends Controller
     {
         $news = News::update($request, $news_id);
 
-        return redirect()->route('news/'.$news_id);
+        return Redirect::to('news/'.$news_id);
     }
 
     /**

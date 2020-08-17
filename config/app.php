@@ -186,7 +186,7 @@ return [
         App\Providers\InviteServiceProvider::class,
         App\Providers\CreateServiceProvider::class,
         App\Providers\NewsServiceProvider::class,
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -246,6 +246,7 @@ return [
         'Invite' => App\Facades\Invite::class,
         'Create' => App\Facades\Create::class,
         'News' => App\Facades\News::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
