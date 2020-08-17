@@ -2,19 +2,20 @@
 @section('content')
 <h1 class="page-title">My News | News
 <small></small>
-<button class="btn green-haze btn-outline sbold uppercase" style="float: right;margin-right: 35px"><strong>Edit</strong></button>
+<a href="/news/{{$news->id}}/editors/update" class="btn green-haze btn-outline sbold uppercase" style="float: right;margin-right: 35px"><strong>Add or Remove Editors</strong></a>
 </h1>
 <div class="col-lg col-xs col-sm">
     <div class="portlet light portlet-fit bordered">
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-directions font-green hide"></i>
-                <span class="caption-subject bold font-dark uppercase ">{{ $news->title }}</span>
-                <span class="caption-helper">{{ $news->type->type }}</span>
+                <span style="cursor: pointer;" class="caption-subject bold font-dark uppercase edits">{{ $news->title }}</span>
+                <span class="caption-helper" style="cursor: pointer;">{{ $news->type->type }}</span>
             </div>
             <div class="mt-author" style="float: right;">
                 <div class="mt-avatar">
                     <img src="{{ asset('/assets/pages/media/users/user.png') }}">
+    <a href="/news/{{ $news->id }}/update" style="float: right;margin-right: 30px" class="edit_info"><strong><i class="fa fa-pencil" aria-hidden="true">Edit</i></strong></a>
                 </div>
                 <div class="mt-author-name">
                     <a href="javascript:;" class="font-blue-madison">{{ $news->author }}</a>
@@ -45,6 +46,7 @@
         <div class="caption">
         <i class="fa fa-picture-o"></i> Post Images </div>
         <div class="tools">
+            <a href="/news/update/images/{{ $news->id }}" data-toggle="modal" class="config" data-original-title="" title=""> </a>
             <a href="" class="collapse" data-original-title="" title=""> </a>
         </div>
     </div>

@@ -68,7 +68,6 @@ class NewsService implements NewsInterface
         $news = $this->news::findOrFail($news_id);
 
         $news->update([
-            'news' => $request->news,
             'title' => $request->title,
             'news' => $request->news,
             'type_id' => $request->type_id,
@@ -88,5 +87,52 @@ class NewsService implements NewsInterface
         return User::WhichAcceptedPanelAdmin()
             ->orWhere('role', User::TYPE_SUPER_ADMIN)
             ->get();
+    }
+
+    public function filter($filter_id)
+    {
+        return $this->news->whereHas('types', function ($query) {
+            $query->where('type_id', $filter_id);
+        })
+        ->whereHas('users', function ($query) {
+            $query->where('user_id', Auth::id());
+        })
+        ->orWhere('author', Auth::id())->paginate(6);
+    }
+
+    public function addImg($request, $news_id) 
+    {
+        $images = [];
+        $files = [];
+
+        $news = $this->news::findOrFail($news_id);
+
+        
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('uploads', 'public');
+                $images[] = Image::make(['path' => $path]);
+            }
+        }
+
+        if ($request->hasFile('files')) {
+            foreach ($request->file('files') as $file) {
+                $path = $file->store('uploads', 'public');
+                $files[] = File::make(['path' => $path]);
+            }
+        }
+
+        $news->images()->saveMany($images);
+        $news->files()->saveMany($files);
+
+        return $news;
+    }
+
+    public function addEditors($request, $news_id) 
+    {
+        $news = $this->news::findOrFail($news_id);
+        $news->users()->attach($request->editors);
+        
+        return $news;
     }
 }

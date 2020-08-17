@@ -10,7 +10,7 @@
                 Filter <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
                     @foreach($types as $type)
-                    <li><a value="{{ $type->type }}">{{ $type->type }}</a></li>
+                    <li value="{{ $type->id }}"><a class="newsType" value="{{ $type->id }}">{{ $type->type }}</a></li>
                     @endforeach
                 </ul>
             </div>

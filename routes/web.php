@@ -46,4 +46,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/news','NewsController@showMyNewsPage')->name('news');
     Route::get('/news/{news_id}','NewsController@showNewsDetailsPage');
     Route::get('api/news', 'NewsController@index');
+    // 
+    // Route::post('newsfilter/{filter_id}', 'NewsController@filter');
+    Route::post('news/{news/id}/info', 'NewsController@edit');
+    Route::get('/news/{news_id}/update','NewsController@showNewsInfoUpdatePage');
+    Route::post('/news/update/{news_id}', 'NewsController@updateInfo')->name('news/update/{news_id}');
+    Route::get('/news/update/images/{news_id}','NewsController@showNewsImgUpdatePage');
+    Route::post('/news/{news_id}/delete/image','NewsController@imageDelete');
+    Route::post('/news/update/images/{news_id}', 'NewsController@addImages')->name('addImage');
+    Route::get('/news/{news_id}/editors/update','NewsController@showNewsEditorsUpdatePage');
+    Route::post('/news/{news_id}/editors/update','NewsController@addEditors');
 });

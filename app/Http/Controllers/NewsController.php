@@ -7,6 +7,7 @@ use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Resources\NewsResource;
 use App\Http\Requests\NewsValidateRequest;
+use App\Http\Requests\NewsUpdateValidationRequest;
 
 class NewsController extends Controller
 {
@@ -38,6 +39,62 @@ class NewsController extends Controller
         return view('admin.news_details')
             ->with('news', $news);
     }
+
+    public function showNewsInfoUpdatePage($news_id)
+    {
+        $types = Type::all();
+        $news = News::show($news_id);
+        $news = NewsResource::make($news);
+
+        return view('admin.news_update_info')
+            ->with('types', $types)
+            ->with('news', $news);
+    }
+
+    public function showNewsImgUpdatePage($news_id)
+    {
+        $news = News::show($news_id);
+        $news = NewsResource::make($news);
+
+        return view('admin.news_update_img')
+            ->with('news', $news);
+    }
+
+    public function showNewsEditorsUpdatePage($news_id)
+    {
+        $editors = News::editors();
+        $news = News::show($news_id);
+        $news = NewsResource::make($news);
+        $admins = $news->users()->get();
+
+        return view('admin.news_update_editors')
+            ->with('news', $news)
+            ->with('admins', $admins)
+            ->with('editors', $editors);
+    }
+    
+    public function imageDelete(Request $request, $news_id)
+    {
+        $news = News::show($news_id);
+        
+        $news->images()->where('id', $request->imageId)->delete();
+
+        return response('Deleted', 200);
+    }
+
+    public function addImages(Request $request, $news_id)
+    {
+        $news = News::addImg($request, $news_id);
+        
+        return redirect()->route('news/udate/images/'.$news_id);
+    }
+
+    public function addEditors(Request $request, $news_id)
+    {
+        $news = News::addEditors($request, $news_id);
+        
+        return redirect()->route('news/udate/images/'.$news_id);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,6 +105,31 @@ class NewsController extends Controller
         $news = News::index();
 
         return NewsResource::collection($news);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filter($filter_id)
+    {
+        $news = News::filter();
+
+        return NewsResource::collection($news);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateInfo(NewsUpdateValidationRequest $request, $news_id)
+    {
+        $news = News::update($request, $news_id);
+
+        return redirect()->route('news/'.$news_id);
     }
 
     /**
