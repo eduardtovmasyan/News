@@ -56,4 +56,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/news/update/images/{news_id}', 'NewsController@addImages')->name('addImage');
     Route::get('/news/{news_id}/editors/update','NewsController@showNewsEditorsUpdatePage');
     Route::post('/news/{news_id}/editors/update','NewsController@addEditors');
+    Route::post('/news/{news_id}/delete/editor','NewsController@editorDelete');
+
 });

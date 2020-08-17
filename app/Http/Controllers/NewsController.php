@@ -82,18 +82,26 @@ class NewsController extends Controller
         return response('Deleted', 200);
     }
 
+    public function editorDelete(Request $request, $news_id)
+    {
+        $news = News::show($news_id);
+        $news->users()->detach($request->editorId);
+
+        return response('Deleted', 200);
+    }
+
     public function addImages(Request $request, $news_id)
     {
         $news = News::addImg($request, $news_id);
         
-        return redirect()->route('news/udate/images/'.$news_id);
+        return redirect()->route('news/'.$news_id.'/images/update');
     }
 
     public function addEditors(Request $request, $news_id)
     {
         $news = News::addEditors($request, $news_id);
         
-        return redirect()->route('news/udate/images/'.$news_id);
+        return redirect()->route('news/'.$news_id.'/editors/update');
     }
     /**
      * Display a listing of the resource.

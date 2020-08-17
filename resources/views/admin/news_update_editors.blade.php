@@ -5,6 +5,7 @@
 </h1>
 <!-- Users -->
 <div class="portlet box blue">
+    <input type="hidden" value="{{ $news->id }}" id="newsId">
     <div class="portlet-title">
         <div class="caption">
         <i class="fa fa-gift"></i> Editors </div>
@@ -16,11 +17,11 @@
         <div class="portlet-body">
             <div class="row" style="padding: 10px 10px">
                 @foreach($admins as $admin)
-                <div class="col-md-4" style="margin-top: 10px">
+                <div class="col-md-4 editorContainer" style="margin-top: 10px">
                     <!--begin: widget 1-3 -->
                     <div class="mt-widget-1">
                         <div class="mt-icon">
-                            <a href="#">
+                            <a class="editor_delete" data-id="{{ $admin->id }}">
                                 <i class="fa fa-minus-circle"></i>
                             </a>
                         </div>
@@ -61,6 +62,7 @@
 </div>
 @endsection
 @section('js')
+    <script src="{{ asset('js/news_details.js')}}" type="text/javascript"></script>
 @endsection
 @section('css')
 @endsection
