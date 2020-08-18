@@ -105,7 +105,7 @@ export default{
             }
             })
             .then(response => {
-                this.data = response.data.data
+              this.data = response.data.data
             })
         },
         methods:{
@@ -124,9 +124,8 @@ export default{
               }
               })
               .then(response => {
-                  this.details = response.data.data
+                this.details = response.data.data
               })
-
           }
         }
 }
