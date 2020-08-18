@@ -37687,7 +37687,11 @@ var render = function() {
         "div",
         {
           staticClass: "col-2 p-5",
-          staticStyle: { "min-height": "100vh", background: "#eee" }
+          staticStyle: {
+            "min-height": "100vh",
+            background: "#eee",
+            overflow: "overlay"
+          }
         },
         [
           _c(
@@ -37760,7 +37764,7 @@ var render = function() {
                                 item.news.substr(
                                   0,
                                   item.news.length - (item.news.length - 20)
-                                ) + "..."
+                                ) + " ..."
                               )
                             )
                           ]),
@@ -37769,7 +37773,10 @@ var render = function() {
                             "a",
                             {
                               staticClass: "float-right",
-                              staticStyle: { color: "rgb(0 86 179)" },
+                              staticStyle: {
+                                color: "rgb(0 86 179)",
+                                cursor: "pointer"
+                              },
                               attrs: { to: "details", "data-id": item.id },
                               on: { click: _vm.readMore }
                             },

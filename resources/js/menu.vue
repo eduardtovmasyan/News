@@ -14,7 +14,7 @@
     </div>
   </nav>
   <div class="row">
-    <div class="col-2 p-5" style="min-height: 100vh;background: #eee;">
+    <div class="col-2 p-5" style="min-height: 100vh;background: #eee;overflow: overlay;">
       <nav class="nav flex-column pt-3">
         <a class="nav-link disabled" href="#">Types</a>
         <a v-for="item in data" class="nav-link" @click="changeType" style="cursor:pointer" v-bind:data-id="item.id">{{ item.type }}</a>
@@ -31,8 +31,8 @@
             <h5 class="card-title">
             {{ item.title }}
             </h5>
-            <p class="card-text">{{ item.news.substr(0, item.news.length - (item.news.length - 20)) + "..." }}</p>
-            <a to='details' class="float-right" v-bind:data-id="item.id" style="color: rgb(0 86 179)" @click="readMore">read more ... </a>
+            <p class="card-text">{{ item.news.substr(0, item.news.length - (item.news.length - 20)) + " ..." }}</p>
+            <a to='details' class="float-right" v-bind:data-id="item.id" style="color: rgb(0 86 179);cursor: pointer;" @click="readMore">read more ... </a>
           </div>
           <div class="card-footer text-muted">
             {{ item.created_at }}
