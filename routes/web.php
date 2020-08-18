@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['logouted']], function() {
-    Route::get('/','LoginController@showLoginForm');
     Route::get('/login','LoginController@showLoginForm');
     Route::post('/login','LoginController@logIn')->name('login');
     Route::get('/register','RegisterController@showSignupForm')->name('register');

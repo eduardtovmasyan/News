@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->group(function () {
-    // Route::resource('user', 'UserController', [
-    //     'only' => ['index', 'store', 'show', 'update', 'destroy']
-    // ]);
-// });
+    
+
+Route::resource('latest-news', 'api\NewsController', [
+    'only' => ['index', 'store']
+]);
+
+Route::get('types', 'api\NewsController@getNewsTypes');

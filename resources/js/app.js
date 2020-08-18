@@ -7,11 +7,11 @@ import axios from 'axios';
 Vue.use(VueAxios, axios);
 
 import Menu from './menu.vue'
-import Ex from "./components/Ex.vue"
+import Home from "./components/home.vue"
 
 let r = [
-	{path: '/menu' , component: Menu},
-	{path: '/ex' , component: Ex},
+	{path: '/' , component: Menu},
+	{path: '/main' , component: Home},
 ]
 
 let router = new VueRouter({
