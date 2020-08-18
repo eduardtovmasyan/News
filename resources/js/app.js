@@ -11,7 +11,7 @@ import Home from "./components/home.vue"
 
 let r = [
 	{path: '/' , component: Menu},
-	{path: '/main' , component: Home},
+	{path: '/details' , component: Home},
 ]
 
 let router = new VueRouter({

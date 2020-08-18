@@ -31,7 +31,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        $news = NewsList::show();
+        $news = NewsList::show($id);
 
         return NewsResource::make($news);
     }

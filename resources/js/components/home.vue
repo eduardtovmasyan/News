@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div class="card text-center mt-5" v-for="item in info" v-if="item.type.type = type">
+
+    <!-- <div class="card text-center mt-5" v-for="item in info" v-if="item.type.type = type"> -->
           <div class="card-header">
-            {{ item.type.type }}
+            <!-- {{ item.type.type }} -->
           </div>
           <div class="card-body">
             <h5 class="card-title">
-            {{ item.title }}
+            <!-- {{ item.title }} -->
             </h5>
-            <p class="card-text">{{ item.news }}</p>
-            <a href="#" class=" float-right" v-bind:data-id="item.id">read more ... </a>
+            <!-- <p class="card-text">{{ item.news }}</p> -->
+    <h1>ddddddddddddddd</h1>
+            <!-- <a href="#" class=" float-right" v-bind:data-id="item.id" style="color: red">read more ... </a> -->
           </div>
           <div class="card-footer text-muted">
-            {{ item.created_at }}
+            <!-- {{ item.created_at }} -->
           </div>
         </div>
       </div>
@@ -22,21 +24,21 @@
     export default{
         data(){
             return{
-                info: null,
-                type:""
+                // info: null,
+                // type:""
             }
         },
         mounted() {
-            this.axios.get('api/latest-news',  
-            {
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            }
-            })
-            .then(response => {
-                this.info = response.data.data
-            })
+            // this.axios.get('api/latest-news',  
+            // {
+            // headers: {
+            //   'Content-Type': 'application/json',
+            //   'Accept': 'application/json',
+            // }
+            // })
+            // .then(response => {
+            //     this.info = response.data.data
+            // })
         },
         methods:{
         

@@ -15,8 +15,8 @@ class NewsListService
     }
 
     public function index()
-    {
-        return $this->news->paginate(6);
+    {   
+        return $this->news->orderBy('id', 'desc')->paginate(20);
     }
 
     public function show($news_id)

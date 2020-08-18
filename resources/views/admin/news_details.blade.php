@@ -51,11 +51,8 @@
         </div>
     </div>
     <div class="portlet-body form">
-        <!--  -->
-        <!--  -->
         <div class="row" style=" padding: 0px 15px;">
             <div class="slideContainer">
-                
                 @foreach($news->images as $image)
                 <div class="picture">
                     <img src="{{ asset('storage/'.$image->path) }}">

@@ -1928,24 +1928,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      info: null,
-      type: ""
+    return {// info: null,
+      // type:""
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.axios.get('api/latest-news', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    }).then(function (response) {
-      _this.info = response.data.data;
-    });
+  mounted: function mounted() {// this.axios.get('api/latest-news',  
+    // {
+    // headers: {
+    //   'Content-Type': 'application/json',
+    //   'Accept': 'application/json',
+    // }
+    // })
+    // .then(response => {
+    //     this.info = response.data.data
+    // })
   },
   methods: {}
 });
@@ -2015,12 +2015,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       data: null,
       info: null,
-      type_id: 0
+      selectedType: 'Political',
+      type_id: 5,
+      details: null
     };
   },
   mounted: function mounted() {
@@ -2045,7 +2074,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     changeType: function changeType(e) {
+      this.details = null;
+      this.selectedType = e.target.innerHTML;
       this.type_id = e.target.getAttribute('data-id');
+    },
+    readMore: function readMore(e) {
+      var _this2 = this;
+
+      var news_id = e.target.getAttribute('data-id'); // document.getElementById('content').innerHTML = "" 
+
+      this.axios.get('api/latest-news/' + news_id, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(function (response) {
+        _this2.details = response.data.data;
+        console.log(_this2.details);
+      });
     }
   }
 });
@@ -37647,44 +37693,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.info, function(item) {
-      return (item.type.type = _vm.type)
-        ? _c("div", { staticClass: "card text-center mt-5" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("\n          " + _vm._s(item.type.type) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v("\n          " + _vm._s(item.title) + "\n          ")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(item.news))
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: " float-right",
-                  attrs: { href: "#", "data-id": item.id }
-                },
-                [_vm._v("read more ... ")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer text-muted" }, [
-              _vm._v("\n          " + _vm._s(item.created_at) + "\n        ")
-            ])
-          ])
-        : _vm._e()
-    }),
-    0
-  )
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "card-header" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", { staticClass: "card-title" }),
+        _vm._v(" "),
+        _c("h1", [_vm._v("ddddddddddddddd")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer text-muted" })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -37714,7 +37742,7 @@ var render = function() {
         "div",
         {
           staticClass: "col-2 p-5",
-          staticStyle: { height: "100vh", background: "#eee" }
+          staticStyle: { "min-height": "100vh", background: "#eee" }
         },
         [
           _c(
@@ -37745,59 +37773,122 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-9 py-5 px-2" }, [
-        _c(
-          "div",
-          { staticClass: "container py-5" },
-          _vm._l(_vm.info, function(item) {
-            return item.type.id == _vm.type_id
-              ? _c("div", { staticClass: "card text-center mt-5" }, [
+      _c(
+        "div",
+        { staticClass: "col-9 py-5 px-2 content", attrs: { id: "content" } },
+        [
+          _vm.details === null
+            ? _c(
+                "h1",
+                { staticStyle: { width: "100%", "text-align": "center" } },
+                [_c("strong", [_vm._v(_vm._s(_vm.selectedType))])]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.details === null
+            ? _c(
+                "div",
+                { staticClass: "container py-4" },
+                _vm._l(_vm.info, function(item) {
+                  return item.type.id == _vm.type_id
+                    ? _c("div", { staticClass: "card text-center mt-5" }, [
+                        _c("div", { staticClass: "card-header" }, [
+                          _vm._v(
+                            "\r\n            " +
+                              _vm._s(item.type.type) +
+                              "\r\n          "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
+                          _c("h5", { staticClass: "card-title" }, [
+                            _vm._v(
+                              "\r\n            " +
+                                _vm._s(item.title) +
+                                "\r\n            "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card-text" }, [
+                            _vm._v(_vm._s(item.news))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "float-right",
+                              staticStyle: { color: "rgb(0 86 179)" },
+                              attrs: { to: "details", "data-id": item.id },
+                              on: { click: _vm.readMore }
+                            },
+                            [_vm._v("read more ... ")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-footer text-muted" }, [
+                          _vm._v(
+                            "\r\n            " +
+                              _vm._s(item.created_at) +
+                              "\r\n          "
+                          )
+                        ])
+                      ])
+                    : _vm._e()
+                }),
+                0
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.details != null
+            ? _c("div", { staticClass: "container py-4 " }, [
+                _c("div", { staticClass: "card" }, [
                   _c("div", { staticClass: "card-header" }, [
-                    _vm._v(
-                      "\r\n            " +
-                        _vm._s(item.type.type) +
-                        "\r\n          "
-                    )
+                    _vm._v("\r\n    " + _vm._s(_vm.details.title) + "\r\n  ")
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v(
-                        "\r\n            " +
-                          _vm._s(item.title) +
-                          "\r\n            "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(_vm._s(item.news))
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: " float-right",
-                        attrs: { href: "#", "data-id": item.id }
-                      },
-                      [_vm._v("read more ... ")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-footer text-muted" }, [
-                    _vm._v(
-                      "\r\n            " +
-                        _vm._s(item.created_at) +
-                        "\r\n          "
-                    )
+                    _c("blockquote", { staticClass: "blockquote mb-0" }, [
+                      _c("p", [_vm._v(_vm._s(_vm.details.news))]),
+                      _vm._v(" "),
+                      _c("footer", { staticClass: "blockquote-footer" }, [
+                        _vm._v(_vm._s(_vm.details.created_at)),
+                        _c("cite", { attrs: { title: "Source Title" } })
+                      ])
+                    ])
                   ])
-                ])
-              : _vm._e()
-          }),
-          0
-        )
-      ]),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "carousel slide",
+                    attrs: { id: "demo", "data-ride": "carousel" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "carousel-inner" },
+                      _vm._l(_vm.details.images, function(img) {
+                        return _c(
+                          "div",
+                          { staticClass: "carousel-item active" },
+                          [_c("img", { attrs: { src: "storage/" + img.path } })]
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]
+                )
+              ])
+            : _vm._e()
+        ]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-1" }, [_vm._v("3")])
+      _c("div", { staticClass: "col-1" })
     ]),
     _vm._v(" "),
     _c("footer", { staticClass: "site-footer fixed-bottom" })
@@ -37832,7 +37923,7 @@ var staticRenderFns = [
         ),
         _vm._v(" "),
         _c("a", { staticClass: "navbar-brand pl-3", attrs: { href: "#" } }, [
-          _vm._v("Navbar")
+          _vm._v("News LLC")
         ]),
         _vm._v(" "),
         _c(
@@ -37841,32 +37932,35 @@ var staticRenderFns = [
             staticClass: "collapse navbar-collapse",
             attrs: { id: "navbarTogglerDemo03" }
           },
-          [
-            _c("ul", { staticClass: "navbar-nav mr-auto mt-2 mt-lg-0" }, [
-              _c("li", { staticClass: "nav-item active" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("Home "),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("Link")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav-item" }, [
-                _c(
-                  "a",
-                  { staticClass: "nav-link disabled", attrs: { href: "#" } },
-                  [_vm._v("Disabled")]
-                )
-              ])
-            ])
-          ]
+          [_c("ul", { staticClass: "navbar-nav mr-auto mt-2 mt-lg-0" })]
         )
       ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: { href: "#demo", "data-slide": "prev" }
+      },
+      [_c("span", { staticClass: "carousel-control-prev-icon" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: { href: "#demo", "data-slide": "next" }
+      },
+      [_c("span", { staticClass: "carousel-control-next-icon" })]
     )
   }
 ]
@@ -53134,7 +53228,7 @@ var r = [{
   path: '/',
   component: _menu_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
-  path: '/main',
+  path: '/details',
   component: _components_home_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
