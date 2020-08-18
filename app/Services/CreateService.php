@@ -14,7 +14,7 @@ class CreateService
         $this->userModel = $userModel;
     }
 
-    public function store($request) 
+    public function create($request) 
     {
         $user = $this->userModel::create([
             'role' => $request->role,

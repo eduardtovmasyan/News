@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-    
-
 Route::resource('latest-news', 'api\NewsController', [
     'only' => ['index', 'store']
 ]);

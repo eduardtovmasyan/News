@@ -187,6 +187,7 @@ return [
         App\Providers\CreateServiceProvider::class,
         App\Providers\NewsServiceProvider::class,
         App\Providers\NewsListServiceProvider::class,
+        App\Providers\TypeServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
@@ -248,6 +249,7 @@ return [
         'Create' => App\Facades\Create::class,
         'News' => App\Facades\News::class,
         'NewsList' => App\Facades\NewsList::class,
+        'Type' => App\Facades\Type::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 

@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="card text-center mt-5" v-for="item in info">
+    <div class="card text-center mt-5" v-for="item in info" v-if="item.type.type = type">
           <div class="card-header">
-            {{item.type.type}}
+            {{ item.type.type }}
           </div>
           <div class="card-body">
             <h5 class="card-title">
-            {{item.title}}
+            {{ item.title }}
             </h5>
-            <p class="card-text">{{item.news}}</p>
-            <a href="#" class=" float-right">read more ... </a>
+            <p class="card-text">{{ item.news }}</p>
+            <a href="#" class=" float-right" v-bind:data-id="item.id">read more ... </a>
           </div>
           <div class="card-footer text-muted">
-            {{item.created_at}}
+            {{ item.created_at }}
           </div>
         </div>
       </div>
@@ -23,6 +23,7 @@
         data(){
             return{
                 info: null,
+                type:""
             }
         },
         mounted() {
@@ -35,7 +36,6 @@
             })
             .then(response => {
                 this.info = response.data.data
-                console.log(response.data.data)
             })
         },
         methods:{

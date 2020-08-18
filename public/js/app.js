@@ -1931,7 +1931,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      info: null
+      info: null,
+      type: ""
     };
   },
   mounted: function mounted() {
@@ -1944,7 +1945,6 @@ __webpack_require__.r(__webpack_exports__);
       }
     }).then(function (response) {
       _this.info = response.data.data;
-      console.log(response.data.data);
     });
   },
   methods: {}
@@ -2001,15 +2001,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      data: null
+      data: null,
+      info: null,
+      type_id: 0
     };
   },
   mounted: function mounted() {
     var _this = this;
 
+    this.axios.get('api/latest-news', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(function (response) {
+      _this.info = response.data.data;
+    });
     this.axios.get('api/types', {
       headers: {
         'Content-Type': 'application/json',
@@ -2017,10 +2041,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     }).then(function (response) {
       _this.data = response.data.data;
-      console.log(response.data.data);
     });
   },
-  methods: {}
+  methods: {
+    changeType: function changeType(e) {
+      this.type_id = e.target.getAttribute('data-id');
+    }
+  }
 });
 
 /***/ }),
@@ -37623,27 +37650,36 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.info, function(item) {
-      return _c("div", { staticClass: "card text-center mt-5" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("\n          " + _vm._s(item.type.type) + "\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("h5", { staticClass: "card-title" }, [
-            _vm._v("\n          " + _vm._s(item.title) + "\n          ")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(item.news))]),
-          _vm._v(" "),
-          _c("a", { staticClass: " float-right", attrs: { href: "#" } }, [
-            _vm._v("read more ... ")
+      return (item.type.type = _vm.type)
+        ? _c("div", { staticClass: "card text-center mt-5" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("\n          " + _vm._s(item.type.type) + "\n        ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v("\n          " + _vm._s(item.title) + "\n          ")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(_vm._s(item.news))
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: " float-right",
+                  attrs: { href: "#", "data-id": item.id }
+                },
+                [_vm._v("read more ... ")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-footer text-muted" }, [
+              _vm._v("\n          " + _vm._s(item.created_at) + "\n        ")
+            ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-footer text-muted" }, [
-          _vm._v("\n          " + _vm._s(item.created_at) + "\n        ")
-        ])
-      ])
+        : _vm._e()
     }),
     0
   )
@@ -37693,8 +37729,13 @@ var render = function() {
               _vm._v(" "),
               _vm._l(_vm.data, function(item) {
                 return _c(
-                  "router-link",
-                  { staticClass: "nav-link", attrs: { to: "/" } },
+                  "a",
+                  {
+                    staticClass: "nav-link",
+                    staticStyle: { cursor: "pointer" },
+                    attrs: { "data-id": item.id },
+                    on: { click: _vm.changeType }
+                  },
                   [_vm._v(_vm._s(item.type))]
                 )
               })
@@ -37705,7 +37746,55 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-9 py-5 px-2" }, [
-        _c("div", { staticClass: "container py-5" }, [_c("router-view")], 1)
+        _c(
+          "div",
+          { staticClass: "container py-5" },
+          _vm._l(_vm.info, function(item) {
+            return item.type.id == _vm.type_id
+              ? _c("div", { staticClass: "card text-center mt-5" }, [
+                  _c("div", { staticClass: "card-header" }, [
+                    _vm._v(
+                      "\r\n            " +
+                        _vm._s(item.type.type) +
+                        "\r\n          "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(
+                        "\r\n            " +
+                          _vm._s(item.title) +
+                          "\r\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(_vm._s(item.news))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: " float-right",
+                        attrs: { href: "#", "data-id": item.id }
+                      },
+                      [_vm._v("read more ... ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-footer text-muted" }, [
+                    _vm._v(
+                      "\r\n            " +
+                        _vm._s(item.created_at) +
+                        "\r\n          "
+                    )
+                  ])
+                ])
+              : _vm._e()
+          }),
+          0
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-1" }, [_vm._v("3")])

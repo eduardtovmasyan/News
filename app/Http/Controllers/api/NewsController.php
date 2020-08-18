@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
+use Type;
 use NewsList;
-use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\NewsResource;
@@ -38,7 +38,7 @@ class NewsController extends Controller
 
     public function getNewsTypes()
     {
-        $types = Type::all();
+        $types = Type::getall();
 
         return TypeResource::collection($types);
     }

@@ -23,12 +23,26 @@
     <div class="col-2 p-5" style="height: 100vh;background: #eee;">
       <nav class="nav flex-column pt-3">
         <a class="nav-link disabled" href="#">Types</a>
-        <router-link to = '/' class="nav-link" v-for="item in data">{{item.type}}</router-link>
+        <a v-for="item in data" class="nav-link" @click="changeType" style="cursor:pointer" v-bind:data-id="item.id">{{ item.type }}</a>
       </nav>
     </div>
     <div class="col-9 py-5 px-2">
       <div class="container py-5">
-        <router-view></router-view>
+        <div class="card text-center mt-5" v-for="item in info" v-if="item.type.id == type_id">
+          <div class="card-header">
+            {{ item.type.type }}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+            {{ item.title }}
+            </h5>
+            <p class="card-text">{{ item.news }}</p>
+            <a href="#" class=" float-right" v-bind:data-id="item.id">read more ... </a>
+          </div>
+          <div class="card-footer text-muted">
+            {{ item.created_at }}
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-1">3</div>
@@ -43,9 +57,23 @@ export default{
         data(){
             return{
                 data: null,
+                info: null,
+                type_id: 0
             }
         },
         mounted() {
+
+        this.axios.get('api/latest-news',  
+            {
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            }
+            })
+            .then(response => {
+                this.info = response.data.data
+            })
+
             this.axios.get('api/types',  
             {
             headers: {
@@ -54,14 +82,13 @@ export default{
             }
             })
             .then(response => {
-
                 this.data = response.data.data
-                console.log(response.data.data)
             })
         },
         methods:{
-        
+          changeType(e) {
+            this.type_id = e.target.getAttribute('data-id')
+          }
         }
 }
-
 </script>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use News;
-use App\Type;
+use Type;
 use Illuminate\Http\Request;
 use App\Http\Resources\NewsResource;
 use Illuminate\Support\Facades\Redirect;
@@ -14,7 +14,7 @@ class NewsController extends Controller
 {
     public function showPostNewsPage()
     {
-        $types = Type::all();
+        $types = Type::getall();
         $editors = News::editors();
 
         return view('admin.post_news')
@@ -24,7 +24,7 @@ class NewsController extends Controller
 
     public function showMyNewsPage()
     {
-        $types = Type::all();
+        $types = Type::getall();
         $news = News::index();
 
         return view('admin.news')
@@ -43,7 +43,7 @@ class NewsController extends Controller
 
     public function showNewsInfoUpdatePage($news_id)
     {
-        $types = Type::all();
+        $types = Type::getall();
         $news = News::show($news_id);
         $news = NewsResource::make($news);
 
