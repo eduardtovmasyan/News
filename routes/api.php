@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('latest-news', 'api\NewsController', [
-    'only' => ['index', 'show']
+    'only' => ['index', 'store']
 ]);
 
 Route::get('types', 'api\NewsController@getNewsTypes');

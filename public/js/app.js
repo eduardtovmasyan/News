@@ -1912,41 +1912,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {// info: null,
-      // type:""
-    };
+    return {};
   },
-  mounted: function mounted() {// this.axios.get('api/latest-news',  
-    // {
-    // headers: {
-    //   'Content-Type': 'application/json',
-    //   'Accept': 'application/json',
-    // }
-    // })
-    // .then(response => {
-    //     this.info = response.data.data
-    // })
-  },
+  mounted: function mounted() {},
   methods: {}
 });
 
@@ -1961,12 +1931,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2081,8 +2045,7 @@ __webpack_require__.r(__webpack_exports__);
     readMore: function readMore(e) {
       var _this2 = this;
 
-      var news_id = e.target.getAttribute('data-id'); // document.getElementById('content').innerHTML = "" 
-
+      var news_id = e.target.getAttribute('data-id');
       this.axios.get('api/latest-news/' + news_id, {
         headers: {
           'Content-Type': 'application/json',
@@ -2090,7 +2053,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this2.details = response.data.data;
-        console.log(_this2.details);
       });
     }
   }
@@ -37693,26 +37655,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div")
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "card-header" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }),
-        _vm._v(" "),
-        _c("h1", [_vm._v("ddddddddddddddd")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-footer text-muted" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37810,7 +37755,14 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("p", { staticClass: "card-text" }, [
-                            _vm._v(_vm._s(item.news))
+                            _vm._v(
+                              _vm._s(
+                                item.news.substr(
+                                  0,
+                                  item.news.length - (item.news.length - 20)
+                                ) + "..."
+                              )
+                            )
                           ]),
                           _vm._v(" "),
                           _c(
@@ -37843,7 +37795,11 @@ var render = function() {
             ? _c("div", { staticClass: "container py-4 " }, [
                 _c("div", { staticClass: "card" }, [
                   _c("div", { staticClass: "card-header" }, [
-                    _vm._v("\r\n    " + _vm._s(_vm.details.title) + "\r\n  ")
+                    _vm._v(
+                      "\r\n            " +
+                        _vm._s(_vm.details.title) +
+                        "\r\n          "
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-body" }, [
@@ -37872,7 +37828,14 @@ var render = function() {
                         return _c(
                           "div",
                           { staticClass: "carousel-item active" },
-                          [_c("img", { attrs: { src: "storage/" + img.path } })]
+                          [
+                            _c("img", {
+                              attrs: {
+                                src: "storage/" + img.path,
+                                height: "400"
+                              }
+                            })
+                          ]
                         )
                       }),
                       0
@@ -37922,7 +37885,7 @@ var staticRenderFns = [
           [_c("span", { staticClass: "navbar-toggler-icon" })]
         ),
         _vm._v(" "),
-        _c("a", { staticClass: "navbar-brand pl-3", attrs: { href: "#" } }, [
+        _c("a", { staticClass: "navbar-brand pl-3", attrs: { href: "/" } }, [
           _vm._v("News LLC")
         ]),
         _vm._v(" "),
