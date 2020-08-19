@@ -82,10 +82,12 @@ class NewsService implements NewsInterface
             ->delete();
     }
 
-    public function editors()
+    public function editors($news_id)
     {
+        $news = $this->news::findOrFail($news_id);
         return User::WhichAcceptedPanelAdmin()
             ->orWhere('role', User::TYPE_SUPER_ADMIN)
+            ->where('id', '!=', $news->author)
             ->get();
     }
 

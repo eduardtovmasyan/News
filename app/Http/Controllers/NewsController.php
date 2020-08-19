@@ -63,7 +63,7 @@ class NewsController extends Controller
 
     public function showNewsEditorsUpdatePage($news_id)
     {
-        $editors = News::editors();
+        $editors = News::editors($news_id);
         $news = News::show($news_id);
         $news = NewsResource::make($news);
         $admins = $news->users()->get();
@@ -169,28 +169,5 @@ class NewsController extends Controller
         $news = News::show($news_id);
 
         return NewsResource::make($news);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
