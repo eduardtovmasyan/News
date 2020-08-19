@@ -11,15 +11,17 @@ class ExportCsv extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $csv;
+    protected $csvPath;
+
     /**
      * Create a new message instance.
      *
+     * @param  string  $csvPath
      * @return void
      */
-    public function __construct($csv)
+    public function __construct(string $csvPath)
     {
-        $this->csv = $csv;
+        $this->csvPath = $csvPath;
     }
 
     /**
@@ -30,10 +32,9 @@ class ExportCsv extends Mailable
     public function build()
     {
         return $this->view('emails.sendCSV')
-                    ->attach(public_path($this->csv), 
-                    [
-                        'as' => 'sample.pdf',
-                        'mime' => 'application/pdf',
+                    ->attach(public_path('storage/'.$this->csvPath), [
+                        'as' => 'export.csv',
+                        'mime' => 'text/csv',
                     ]);
     }
 }

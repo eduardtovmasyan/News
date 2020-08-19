@@ -56,7 +56,7 @@ class User extends Authenticatable
 
     public function news()
     {
-        return $this->belongsToMany(User::class, 'news_users', 'user_id', 'news_id');
+        return $this->belongsToMany(News::class, 'news_users');
     }
 
     public function scopeWhichSuperAdmin($query)

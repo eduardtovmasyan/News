@@ -23,8 +23,8 @@ class NewsResource extends JsonResource
             'author' => UserResource::make($this->creator),
             'images' => FileResource::collection($this->images),
             'files' => FileResource::collection($this->files),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
         ];
     }
 }

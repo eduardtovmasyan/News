@@ -85,10 +85,14 @@ class NewsService implements NewsInterface
     public function editors($news_id)
     {
         $news = $this->news::findOrFail($news_id);
-        return User::WhichAcceptedPanelAdmin()
-            ->orWhere('role', User::TYPE_SUPER_ADMIN)
-            ->where('id', '!=', $news->author)
-            ->get();
+
+        return User::where(function ($query) {
+            $query->whichAcceptedPanelAdmin()
+                ->orWhere('role', User::TYPE_SUPER_ADMIN);
+        })->where('id', '!=', $news->author)
+        ->whereDoesntHave('news', function ($query) use ($news_id) {
+            $query->where('news.id', $news_id);
+        })->get();
     }
 
     public function filter($filter_id)
@@ -131,7 +135,7 @@ class NewsService implements NewsInterface
     public function addEditors($request, $news_id) 
     {
         $news = $this->news::findOrFail($news_id);
-        $news->users()->attach($request->editors);
+        $news->users()->syncWithoutDetaching($request->editors);
         
         return $news;
     }
