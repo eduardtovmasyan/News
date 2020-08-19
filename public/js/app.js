@@ -2013,6 +2013,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2020,7 +2030,11 @@ __webpack_require__.r(__webpack_exports__);
       info: null,
       selectedType: 'Political',
       type_id: 5,
-      details: null
+      details: null,
+      next: '',
+      prev: '',
+      currentPage: null,
+      page: true
     };
   },
   mounted: function mounted() {
@@ -2034,6 +2048,15 @@ __webpack_require__.r(__webpack_exports__);
       }
     }).then(function (response) {
       _this.info = response.data.data;
+      _this.prev = response.data.links.prev;
+      _this.next = response.data.links.next;
+      _this.currentPage = response.data.meta.current_page;
+
+      if (_this.next == null && _this.prev === null) {
+        _this.page = false;
+      } else {
+        _this.page = true;
+      }
     });
     this.axios.get('api/types', {
       headers: {
@@ -2057,6 +2080,15 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this2.info = response.data.data;
+        _this2.prev = response.data.links.prev;
+        _this2.next = response.data.links.next;
+        _this2.currentPage = response.data.meta.current_page;
+
+        if (_this2.next === null && _this2.prev === null) {
+          _this2.page = false;
+        } else {
+          _this2.page = true;
+        }
       });
       this.selectedType = e.target.innerHTML;
       this.type_id = e.target.getAttribute('data-id');
@@ -2072,6 +2104,50 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this3.details = response.data.data;
+      });
+    },
+    paginationNext: function paginationNext(e) {
+      var _this4 = this;
+
+      this.details = null;
+      this.axios.get(this.next, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(function (response) {
+        _this4.info = response.data.data;
+        _this4.prev = response.data.links.prev;
+        _this4.next = response.data.links.next;
+        _this4.currentPage = response.data.meta.current_page;
+
+        if (_this4.next == null && _this4.prev === null) {
+          _this4.page = false;
+        } else {
+          _this4.page = true;
+        }
+      });
+    },
+    paginationPrev: function paginationPrev(e) {
+      var _this5 = this;
+
+      this.details = null;
+      this.axios.get(this.prev, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(function (response) {
+        _this5.info = response.data.data;
+        _this5.prev = response.data.links.prev;
+        _this5.currentPage = response.data.meta.current_page;
+        _this5.next = response.data.links.next;
+
+        if (_this5.next == null && _this5.prev === null) {
+          _this5.page = false;
+        } else {
+          _this5.page = true;
+        }
       });
     }
   }
@@ -37757,63 +37833,134 @@ var render = function() {
             ? _c(
                 "div",
                 { staticClass: "container py-4" },
-                _vm._l(_vm.info, function(item) {
-                  return item.type.id == _vm.type_id
-                    ? _c("div", { staticClass: "card text-center mt-5" }, [
-                        _c("div", { staticClass: "card-header" }, [
-                          _vm._v(
-                            "\r\n            " +
-                              _vm._s(item.type.type) +
-                              "\r\n          "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "card-body" }, [
-                          _c("h5", { staticClass: "card-title" }, [
+                [
+                  _vm._l(_vm.info, function(item) {
+                    return item.type.id == _vm.type_id
+                      ? _c("div", { staticClass: "card text-center mt-5" }, [
+                          _c("div", { staticClass: "card-header" }, [
                             _vm._v(
                               "\r\n            " +
-                                _vm._s(item.title) +
-                                "\r\n            "
+                                _vm._s(item.type.type) +
+                                "\r\n          "
                             )
                           ]),
                           _vm._v(" "),
-                          _c("p", { staticClass: "card-text" }, [
-                            _vm._v(
-                              _vm._s(
-                                item.news.substr(
-                                  0,
-                                  item.news.length - (item.news.length - 20)
-                                ) + " ..."
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("h5", { staticClass: "card-title" }, [
+                              _vm._v(
+                                "\r\n            " +
+                                  _vm._s(item.title) +
+                                  "\r\n            "
                               )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "card-text" }, [
+                              _vm._v(
+                                _vm._s(
+                                  item.news.substr(
+                                    0,
+                                    item.news.length - (item.news.length - 20)
+                                  ) + " ..."
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "float-right",
+                                staticStyle: {
+                                  color: "rgb(0 86 179)",
+                                  cursor: "pointer"
+                                },
+                                attrs: { to: "details", "data-id": item.id },
+                                on: { click: _vm.readMore }
+                              },
+                              [_vm._v("read more ... ")]
                             )
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "float-right",
-                              staticStyle: {
-                                color: "rgb(0 86 179)",
-                                cursor: "pointer"
-                              },
-                              attrs: { to: "details", "data-id": item.id },
-                              on: { click: _vm.readMore }
-                            },
-                            [_vm._v("read more ... ")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "card-footer text-muted" }, [
-                          _vm._v(
-                            "\r\n            " +
-                              _vm._s(item.created_at) +
-                              "\r\n          "
-                          )
+                          _c("div", { staticClass: "card-footer text-muted" }, [
+                            _vm._v(
+                              "\r\n            " +
+                                _vm._s(item.created_at) +
+                                "\r\n          "
+                            )
+                          ])
                         ])
-                      ])
-                    : _vm._e()
-                }),
-                0
+                      : _vm._e()
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.page,
+                          expression: "page"
+                        }
+                      ],
+                      staticClass: "btn-group pt-4 float-right",
+                      attrs: {
+                        role: "group",
+                        "aria-label": "Button group with nested dropdown"
+                      }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.prev,
+                              expression: "prev"
+                            }
+                          ],
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button" },
+                          on: { click: _vm.paginationPrev }
+                        },
+                        [_vm._v("<< Prev")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button" }
+                        },
+                        [
+                          _c("span", { staticClass: "badge badge-light" }, [
+                            _vm._v(_vm._s(_vm.currentPage))
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.next,
+                              expression: "next"
+                            }
+                          ],
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button" },
+                          on: { click: _vm.paginationNext }
+                        },
+                        [_vm._v("Next >>")]
+                      )
+                    ]
+                  )
+                ],
+                2
               )
             : _vm._e(),
           _vm._v(" "),

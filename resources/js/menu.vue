@@ -38,6 +38,15 @@
             {{ item.created_at }}
           </div>
         </div>
+        <!--  -->
+    <div class="btn-group pt-4 float-right" role="group" aria-label="Button group with nested dropdown" v-show="page">
+  <button type="button" class="btn btn-secondary" @click="paginationPrev" v-show="prev"><< Prev</button>
+    <button type="button" class="btn btn-secondary">
+     <span class="badge badge-light">{{currentPage}}</span>
+    </button>
+  <button type="button" class="btn btn-secondary" @click="paginationNext" v-show="next">Next >></button>
+</div>
+    <!--  -->
       </div>
       <div class="container py-4 " v-if="details !== null">
         <div class="card">
@@ -72,6 +81,7 @@
         </div>
       </div>
     </div>
+    
   </div>
   <div class="col-1"></div>
 </div>
@@ -83,12 +93,16 @@
 <script>
 export default{
         data(){
-            return{
+            return {
                 data: null,
                 info: null,
                 selectedType: 'Political',
                 type_id: 5,
                 details: null,
+                next: '',
+                prev: '',
+                currentPage: null,
+                page: true
             }
         },
         mounted() {
@@ -102,6 +116,14 @@ export default{
               })
               .then(response => {
                 this.info = response.data.data
+                this.prev = response.data.links.prev
+                this.next = response.data.links.next
+                this.currentPage = response.data.meta.current_page
+                if (this.next == null && this.prev === null) {
+                  this.page = false
+                } else {
+                  this.page = true
+                }
               })
 
             this.axios.get('api/types',  
@@ -113,6 +135,7 @@ export default{
             })
             .then(response => {
               this.data = response.data.data
+              
             })
         },
         methods:{
@@ -130,6 +153,14 @@ export default{
               })
               .then(response => {
                 this.info = response.data.data
+                this.prev = response.data.links.prev
+                this.next = response.data.links.next
+                this.currentPage = response.data.meta.current_page
+                if (this.next === null && this.prev === null) {
+                  this.page = false
+                } else {
+                  this.page = true
+                }
               })
 
             this.selectedType = e.target.innerHTML
@@ -146,6 +177,52 @@ export default{
               })
               .then(response => {
                 this.details = response.data.data
+              })
+          },
+          paginationNext(e) {
+            
+            this.details = null
+
+            this.axios.get(this.next,  
+              {
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              }
+              })
+              .then(response => {
+                this.info = response.data.data
+                this.prev = response.data.links.prev
+                this.next = response.data.links.next
+                this.currentPage = response.data.meta.current_page
+                if (this.next == null && this.prev === null) {
+                  this.page = false
+                } else {
+                  this.page = true
+                }
+
+              })
+          },
+          paginationPrev(e) {
+            this.details = null
+
+            this.axios.get(this.prev,  
+              {
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              }
+              })
+              .then(response => {
+                this.info = response.data.data
+                this.prev = response.data.links.prev
+                this.currentPage = response.data.meta.current_page
+                this.next = response.data.links.next
+                if (this.next == null && this.prev === null) {
+                  this.page = false
+                } else {
+                  this.page = true
+                }
               })
           }
         }
