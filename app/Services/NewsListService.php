@@ -23,4 +23,9 @@ class NewsListService
     {
         return $this->news::findOrFail($news_id);
     }
+    
+    public function filter($filter_id)
+    {
+        return $this->news->where('type_id', $filter_id)->orderBy('id', 'desc')->paginate(20);
+    }
 }

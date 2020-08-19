@@ -24,6 +24,18 @@ class NewsController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filter($filter_id)
+    {
+        $news = NewsList::filter($filter_id);
+        
+        return NewsResource::collection($news);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

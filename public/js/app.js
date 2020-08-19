@@ -2026,7 +2026,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.axios.get('api/latest-news', {
+    this.details = null;
+    this.axios.get('api/latest-news/filter/5', {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -2045,12 +2046,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     changeType: function changeType(e) {
+      var _this2 = this;
+
       this.details = null;
+      var filter_id = e.target.getAttribute('data-id');
+      this.axios.get('api/latest-news/filter/' + filter_id, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(function (response) {
+        _this2.info = response.data.data;
+      });
       this.selectedType = e.target.innerHTML;
       this.type_id = e.target.getAttribute('data-id');
     },
     readMore: function readMore(e) {
-      var _this2 = this;
+      var _this3 = this;
 
       var news_id = e.target.getAttribute('data-id');
       this.axios.get('api/latest-news/' + news_id, {
@@ -2059,7 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
           'Accept': 'application/json'
         }
       }).then(function (response) {
-        _this2.details = response.data.data;
+        _this3.details = response.data.data;
       });
     }
   }
@@ -37805,7 +37817,7 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.details != null
+          _vm.details !== null
             ? _c("div", { staticClass: "container py-4 " }, [
                 _c("div", { staticClass: "card" }, [
                   _c("div", { staticClass: "card-header" }, [
@@ -37844,15 +37856,18 @@ var render = function() {
                         { staticClass: "carousel-inner" },
                         [
                           _c("div", { staticClass: "carousel-item active" }, [
-                            _c("img", {
-                              staticClass: "d-block w-100",
-                              attrs: {
-                                "data-src": " slide",
-                                alt: "Second slide [800x400]",
-                                src: "storage/" + _vm.details.images[0].path,
-                                "data-holder-rendered": "true"
-                              }
-                            })
+                            _vm.details.images[0]
+                              ? _c("img", {
+                                  staticClass: "d-block w-100",
+                                  attrs: {
+                                    "data-src": " slide",
+                                    alt: "Second slide [800x400]",
+                                    src:
+                                      "storage/" + _vm.details.images[0].path,
+                                    "data-holder-rendered": "true"
+                                  }
+                                })
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _vm._l(_vm.details.images, function(img) {

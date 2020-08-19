@@ -18,4 +18,5 @@ Route::resource('latest-news', 'api\NewsController', [
     'only' => ['index', 'show']
 ]);
 
+Route::get('latest-news/filter/{filter_id}', 'api\NewsController@filter');
 Route::get('types', 'api\NewsController@getNewsTypes');

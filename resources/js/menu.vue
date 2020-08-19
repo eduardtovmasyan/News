@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <div class="container py-4 " v-if="details != null">
+      <div class="container py-4 " v-if="details !== null">
         <div class="card">
           <div class="card-header">
             {{ details.title }}
@@ -47,7 +47,7 @@
           <div class="card-body">
             <blockquote class="blockquote mb-0">
               <p>{{ details.news }}</p>
-            <footer class="blockquote-footer">{{ details.created_at }}<cite title="Source Title"></cite></footer>
+            <footer class="blockquote-footer" >{{ details.created_at }}<cite title="Source Title"></cite></footer>
           </blockquote>
         </div>
       </div>
@@ -55,7 +55,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" data-src=" slide" alt="Second slide [800x400]" v-bind:src="'storage/' + details.images[0].path" data-holder-rendered="true">
+              <img class="d-block w-100" v-if="details.images[0]" data-src=" slide" alt="Second slide [800x400]" v-bind:src="'storage/' + details.images[0].path" data-holder-rendered="true">
             </div>
             <div class="carousel-item" v-for="img in details.images">
               <img class="d-block w-100" v-bind:src="'storage/' + img.path" data-src=" slide" data-holder-rendered="true">
@@ -92,17 +92,17 @@ export default{
             }
         },
         mounted() {
-
-        this.axios.get('api/latest-news',  
-            {
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            }
-            })
-            .then(response => {
+            this.details = null
+            this.axios.get('api/latest-news/filter/5',  
+              {
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              }
+              })
+              .then(response => {
                 this.info = response.data.data
-            })
+              })
 
             this.axios.get('api/types',  
             {
@@ -117,7 +117,21 @@ export default{
         },
         methods:{
           changeType(e) {
+
             this.details = null
+            var filter_id = e.target.getAttribute('data-id')
+            
+            this.axios.get('api/latest-news/filter/' + filter_id,  
+              {
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              }
+              })
+              .then(response => {
+                this.info = response.data.data
+              })
+
             this.selectedType = e.target.innerHTML
             this.type_id = e.target.getAttribute('data-id')
           },
