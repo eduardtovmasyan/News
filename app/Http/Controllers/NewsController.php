@@ -123,9 +123,13 @@ class NewsController extends Controller
      */
     public function filter($filter_id)
     {
-        $news = News::filter();
+        $types = Type::getall();
+        $news = News::filter($filter_id);
+        $news = NewsResource::collection($news);
 
-        return NewsResource::collection($news);
+        return view('admin.news_filter')
+            ->with('news', $news)
+            ->with('types', $types);
     }
 
     /**

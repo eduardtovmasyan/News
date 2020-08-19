@@ -91,13 +91,12 @@ class NewsService implements NewsInterface
 
     public function filter($filter_id)
     {
-        return $this->news->whereHas('types', function ($query) {
-            $query->where('type_id', $filter_id);
-        })
+        return $news = $this->news
         ->whereHas('users', function ($query) {
             $query->where('user_id', Auth::id());
         })
-        ->orWhere('author', Auth::id())->paginate(6);
+        ->orWhere('author', Auth::id())
+        ->where('type_id', $filter_id)->paginate(6);
     }
 
     public function addImg($request, $news_id) 

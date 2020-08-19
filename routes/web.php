@@ -34,7 +34,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/news','NewsController@showMyNewsPage')->name('news');
     Route::get('/news/{news_id}','NewsController@showNewsDetailsPage');
     Route::get('api/news', 'NewsController@index');
-    // Route::post('newsfilter/{filter_id}', 'NewsController@filter');
     Route::post('news/{news/id}/info', 'NewsController@edit');
     Route::get('/news/{news_id}/update','NewsController@showNewsInfoUpdatePage');
     Route::post('/news/update/{news_id}', 'NewsController@updateInfo')->name('news/update/{news_id}');
@@ -45,6 +44,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/news/{news_id}/editors/update','NewsController@addEditors');
     Route::post('/news/{news_id}/delete/editor','NewsController@editorDelete');
     // Route::get('/articles/exportCSV','PostsController@exportCSV');
+    Route::get('/news/filter/{filter_id}', 'NewsController@filter');
 });
 
 Route::get('/{any}', function () {
