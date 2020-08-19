@@ -108,7 +108,6 @@ class NewsService implements NewsInterface
 
         $news = $this->news::findOrFail($news_id);
 
-        
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $path = $image->store('uploads', 'public');

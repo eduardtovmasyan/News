@@ -43,8 +43,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/news/{news_id}/editors/update','NewsController@showNewsEditorsUpdatePage');
     Route::post('/news/{news_id}/editors/update','NewsController@addEditors');
     Route::post('/news/{news_id}/delete/editor','NewsController@editorDelete');
-    // Route::get('/articles/exportCSV','PostsController@exportCSV');
+    Route::get('/news/export/csv','ExportController@exportCSV');
     Route::get('/news/filter/{filter_id}', 'NewsController@filter');
+    Route::post('/news/export/csv', 'ExportController@exportCSV');
 });
 
 Route::get('/{any}', function () {

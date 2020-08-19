@@ -188,6 +188,7 @@ return [
         App\Providers\NewsServiceProvider::class,
         App\Providers\NewsListServiceProvider::class,
         App\Providers\TypeServiceProvider::class,
+        App\Providers\CSVServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
@@ -250,6 +251,7 @@ return [
         'News' => App\Facades\News::class,
         'NewsList' => App\Facades\NewsList::class,
         'Type' => App\Facades\Type::class,
+        'CSV' => App\Facades\CSV::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 

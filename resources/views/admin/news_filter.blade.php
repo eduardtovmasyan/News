@@ -17,6 +17,11 @@
         </div>
     </span>
     </h1>
+    <div class="input-group" style="margin: 30px 0">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+        <span class="input-group-addon csv" style="cursor: pointer;" data-id="{{ $news->first()->type_id }}">Send</span>
+    </div>
     @foreach($news as $post)
     <div class="col-md col-xs col-sm">
         <div class="portlet light portlet-fit bordered">
