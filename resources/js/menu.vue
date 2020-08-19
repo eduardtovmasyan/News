@@ -51,18 +51,25 @@
           </blockquote>
         </div>
       </div>
-      <div id="demo" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" v-for="img in details.images" >
-            <img v-bind:src="'storage/' + img.path" height="400">
+      <div class="bd-example">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" data-src=" slide" alt="Second slide [800x400]" v-bind:src="'storage/' + details.images[0].path" data-holder-rendered="true">
+            </div>
+            <div class="carousel-item" v-for="img in details.images">
+              <img class="d-block w-100" v-bind:src="'storage/' + img.path" data-src=" slide" data-holder-rendered="true">
+            </div>
           </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
       </div>
     </div>
   </div>

@@ -2006,6 +2006,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37821,38 +37828,55 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "carousel slide",
-                    attrs: { id: "demo", "data-ride": "carousel" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "carousel-inner" },
-                      _vm._l(_vm.details.images, function(img) {
-                        return _c(
-                          "div",
-                          { staticClass: "carousel-item active" },
-                          [
+                _c("div", { staticClass: "bd-example" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "carousel slide",
+                      attrs: {
+                        id: "carouselExampleControls",
+                        "data-ride": "carousel"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "carousel-inner" },
+                        [
+                          _c("div", { staticClass: "carousel-item active" }, [
                             _c("img", {
+                              staticClass: "d-block w-100",
                               attrs: {
-                                src: "storage/" + img.path,
-                                height: "400"
+                                "data-src": " slide",
+                                alt: "Second slide [800x400]",
+                                src: "storage/" + _vm.details.images[0].path,
+                                "data-holder-rendered": "true"
                               }
                             })
-                          ]
-                        )
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _vm._m(2)
-                  ]
-                )
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.details.images, function(img) {
+                            return _c("div", { staticClass: "carousel-item" }, [
+                              _c("img", {
+                                staticClass: "d-block w-100",
+                                attrs: {
+                                  src: "storage/" + img.path,
+                                  "data-src": " slide",
+                                  "data-holder-rendered": "true"
+                                }
+                              })
+                            ])
+                          })
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ]
+                  )
+                ])
               ])
             : _vm._e()
         ]
@@ -37915,9 +37939,20 @@ var staticRenderFns = [
       "a",
       {
         staticClass: "carousel-control-prev",
-        attrs: { href: "#demo", "data-slide": "prev" }
+        attrs: {
+          href: "#carouselExampleControls",
+          role: "button",
+          "data-slide": "prev"
+        }
       },
-      [_c("span", { staticClass: "carousel-control-prev-icon" })]
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+      ]
     )
   },
   function() {
@@ -37928,9 +37963,20 @@ var staticRenderFns = [
       "a",
       {
         staticClass: "carousel-control-next",
-        attrs: { href: "#demo", "data-slide": "next" }
+        attrs: {
+          href: "#carouselExampleControls",
+          role: "button",
+          "data-slide": "next"
+        }
       },
-      [_c("span", { staticClass: "carousel-control-next-icon" })]
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+      ]
     )
   }
 ]
