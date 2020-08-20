@@ -106,7 +106,6 @@ export default{
             }
         },
         mounted() {
-            this.details = null
             this.axios.get('api/latest-news/filter/5',  
               {
               headers: {
@@ -115,15 +114,15 @@ export default{
               }
               })
               .then(response => {
-                // this.info = response.data.data
-                // this.prev = response.data.links.prev
-                // this.next = response.data.links.next
-                // this.currentPage = response.data.meta.current_page
-                // if (this.next == null && this.prev === null) {
-                //   this.page = false
-                // } else {
-                //   this.page = true
-                // }
+                this.info = response.data.data
+                this.prev = response.data.links.prev
+                this.next = response.data.links.next
+                this.currentPage = response.data.meta.current_page
+                if (this.next == null && this.prev === null) {
+                  this.page = false
+                } else {
+                  this.page = true
+                }
               })
 
             this.axios.get('api/types',  
@@ -135,7 +134,6 @@ export default{
             })
             .then(response => {
               this.data = response.data.data
-              
             })
         },
         methods:{
