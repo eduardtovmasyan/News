@@ -22,6 +22,6 @@ class CSVService
         }
 
         fclose($csv);
-        Mail::to($request->email)->send(new ExportCsv($fileName));
+        Mail::to($request->email)->queue(new ExportCsv($fileName));
     }
 }

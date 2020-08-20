@@ -115,15 +115,15 @@ export default{
               }
               })
               .then(response => {
-                this.info = response.data.data
-                this.prev = response.data.links.prev
-                this.next = response.data.links.next
-                this.currentPage = response.data.meta.current_page
-                if (this.next == null && this.prev === null) {
-                  this.page = false
-                } else {
-                  this.page = true
-                }
+                // this.info = response.data.data
+                // this.prev = response.data.links.prev
+                // this.next = response.data.links.next
+                // this.currentPage = response.data.meta.current_page
+                // if (this.next == null && this.prev === null) {
+                //   this.page = false
+                // } else {
+                //   this.page = true
+                // }
               })
 
             this.axios.get('api/types',  

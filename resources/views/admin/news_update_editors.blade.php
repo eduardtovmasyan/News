@@ -57,7 +57,7 @@
             <div class="form-actions right1" dir="rtl">
                 {{csrf_field()}}
                 <a href="{{ route('home') }}" type="button" class="btn default">Cancel</a>
-                <button type="submit" class="btn green">Post</button>
+                <button type="submit" class="btn green">Send</button>
             </div>
         </form>
     </div>

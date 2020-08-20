@@ -2046,17 +2046,15 @@ __webpack_require__.r(__webpack_exports__);
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
-    }).then(function (response) {
-      _this.info = response.data.data;
-      _this.prev = response.data.links.prev;
-      _this.next = response.data.links.next;
-      _this.currentPage = response.data.meta.current_page;
-
-      if (_this.next == null && _this.prev === null) {
-        _this.page = false;
-      } else {
-        _this.page = true;
-      }
+    }).then(function (response) {// this.info = response.data.data
+      // this.prev = response.data.links.prev
+      // this.next = response.data.links.next
+      // this.currentPage = response.data.meta.current_page
+      // if (this.next == null && this.prev === null) {
+      //   this.page = false
+      // } else {
+      //   this.page = true
+      // }
     });
     this.axios.get('api/types', {
       headers: {

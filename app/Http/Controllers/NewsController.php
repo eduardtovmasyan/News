@@ -15,7 +15,7 @@ class NewsController extends Controller
     public function showPostNewsPage()
     {
         $types = Type::getall();
-        $editors = News::editors();
+        $editors = News::admins();
 
         return view('admin.post_news')
             ->with('types', $types)

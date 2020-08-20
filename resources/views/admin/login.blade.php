@@ -26,8 +26,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <label class="rememberme mt-checkbox mt-checkbox-outline">
-                                            <input type="checkbox" name="remember" value="1" /> Remember me
-                                            <span></span>
+                                            <a href="{{ route('register') }}" class="login-copyright text-right"/> registration </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-8 text-right">

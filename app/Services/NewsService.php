@@ -22,7 +22,7 @@ class NewsService implements NewsInterface
     {
         return $this->news->whereHas('users', function ($query) {
             $query->where('user_id', Auth::id());
-        })->orWhere('author', Auth::id())->paginate(6);
+        })->orWhere('author', Auth::id())->orderBy('id', 'desc')->paginate(6);
     }
 
     public function store($request) 
@@ -92,6 +92,14 @@ class NewsService implements NewsInterface
         })->where('id', '!=', $news->author)
         ->whereDoesntHave('news', function ($query) use ($news_id) {
             $query->where('news.id', $news_id);
+        })->get();
+    }
+
+    public function admins()
+    {
+        return User::where('id', '!=', Auth::id())->where(function ($query) {
+            $query->whichAcceptedPanelAdmin()
+                ->orWhere('role', User::TYPE_SUPER_ADMIN);
         })->get();
     }
 
