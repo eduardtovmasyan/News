@@ -31,6 +31,20 @@ class UserService implements UserInterface
 
         return $user;
     }
+    
+    public function createAdmin($request) 
+    {
+        $user = $this->userModel::create([
+            'role' => $request->role,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'is_active' => User::TYPE_ACCESS_ACCEPTED,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return $user;
+    }
 
     public function show($user_id)
     {

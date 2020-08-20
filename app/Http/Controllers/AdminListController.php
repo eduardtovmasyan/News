@@ -39,4 +39,9 @@ class AdminListController extends Controller
         return view('admin.accept_decline')
             ->with('pandingPanelAdmins', $pandingPanelAdmins);
     }
+
+    public function showCreateAdminPage()
+    {
+       return view('admin.create');
+    }
 }

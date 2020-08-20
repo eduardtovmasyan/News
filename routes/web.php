@@ -19,8 +19,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profile/details/{user_id}','ProfileController@showProfilePageDetails')->name('user_details');
     Route::get('/invite','InvitationController@showInvitationPage')->name('invite');
     Route::post('/invite','InvitationController@sendInvitationMail')->name('invite');
-    Route::get('/create','CreateAdminController@showCreateAdminPage')->name('create');
-    Route::post('/create','CreateAdminController@store')->name('create');
+    Route::get('/create','AdminListController@showCreateAdminPage')->name('create');
+    Route::post('/create','UserController@createAdmin')->name('create');
     Route::delete('/profile/{user_id}/delete','UserController@destroy')->name('delete');
     Route::patch('/profile/{user_id}/block', 'ProfileAccesController@block')->name('block');
     Route::get('/profile/{user_id}/invited', 'ProfileAccesController@invited')->name('invited');

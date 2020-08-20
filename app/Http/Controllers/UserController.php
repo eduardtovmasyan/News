@@ -6,6 +6,7 @@ use UserCrud;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserValidateRequest;
+use App\Http\Requests\CreateAdminValidationRequest;
 
 class UserController extends Controller
 {
@@ -70,5 +71,12 @@ class UserController extends Controller
     public function destroy($user_id)
     {
         UserCrud::destroy($user_id);
+    }
+
+    public function createAdmin(CreateAdminValidationRequest $request)
+    {
+        $user = UserCrud::createAdmin($request);
+        
+        return redirect()->route('home');
     }
 }

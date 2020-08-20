@@ -18,7 +18,7 @@
     <a href="/news/{{ $news->id }}/update" style="float: right;margin-right: 30px" class="edit_info"><strong><i class="fa fa-pencil" aria-hidden="true">Edit</i></strong></a>
                 </div>
                 <div class="mt-author-name">
-                    <a href="javascript:;" class="font-blue-madison">{{ $news->author }}</a>
+                    <a href="javascript:;" class="font-blue-madison">{{ $news->creator->name }} {{ $news->creator->surname }}</a>
                 </div>
                 <div class="mt-author-datetime font-grey-mint">{{ $news->created_at }}</div>
             </div>

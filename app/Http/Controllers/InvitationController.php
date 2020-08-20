@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Create;
 use Invite;
 use Illuminate\Http\Request;
 use App\Http\Requests\InviteValidationRequest;
@@ -26,7 +25,7 @@ class InvitationController extends Controller
 
     public function store(CreateAdminValidationRequest $request)
     {
-        $users = Create::store($request);
+        $users = UserCrud::createAdmin($request);
 
         return UserResource::collection($users);
     }

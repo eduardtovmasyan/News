@@ -54,7 +54,7 @@
                                 <div class="clearfix"></div>
                                 <div class="mt-content border-grey-steel">
                                     <p>{{ Str::limit($post->news, 100, '...') }}</p>
-                                    <a href="news/{{ $post->id }}" class="btn btn-circle green-turquoise">Read More</a>
+                                    <a href="/news/{{ $post->id }}" class="btn btn-circle green-turquoise">Read More</a>
                                 </div>
                             </li>
                         </ol>

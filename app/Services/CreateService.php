@@ -1,30 +1,30 @@
 <?php
 
-namespace App\Services;
+// namespace App\Services;
 
-use App\User;
-use Illuminate\Support\Facades\Hash;
+// use App\User;
+// use Illuminate\Support\Facades\Hash;
 
-class CreateService
-{
-    protected  $userModel;
+// class CreateService
+// {
+//     protected  $userModel;
 
-    function __construct(User $userModel)
-    {
-        $this->userModel = $userModel;
-    }
+//     function __construct(User $userModel)
+//     {
+//         $this->userModel = $userModel;
+//     }
 
-    public function create($request) 
-    {
-        $user = $this->userModel::create([
-            'role' => $request->role,
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'email' => $request->email,
-            'is_active' => User::TYPE_ACCESS_ACCEPTED,
-            'password' => Hash::make($request->password),
-        ]);
+//     public function create($request) 
+//     {
+//         $user = $this->userModel::create([
+//             'role' => $request->role,
+//             'name' => $request->name,
+//             'surname' => $request->surname,
+//             'email' => $request->email,
+//             'is_active' => User::TYPE_ACCESS_ACCEPTED,
+//             'password' => Hash::make($request->password),
+//         ]);
 
-        return $user;
-    }
-}
+//         return $user;
+//     }
+// }
