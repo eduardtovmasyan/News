@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class InviteService
 {
-    protected  $userModel;
+    protected $userModel;
 
     function __construct(User $userModel)
     {

@@ -6,7 +6,7 @@ use App\Type;
 
 class TypeService
 {
-    protected  $typeModel;
+    protected $typeModel;
 
     function __construct(Type $typeModel)
     {

@@ -3,12 +3,11 @@
 namespace App\Services;
 
 use App\User;
-use App\Contracts\UserInterface;
 use Illuminate\Support\Facades\Hash;
 
 class LoginService
 {
-    protected  $userModel;
+    protected $userModel;
 
     function __construct(User $userModel)
     {

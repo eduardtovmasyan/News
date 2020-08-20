@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserService implements UserInterface
 {
-    protected  $userModel;
+    protected $userModel;
 
     function __construct(User $userModel)
     {

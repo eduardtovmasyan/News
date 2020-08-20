@@ -7,7 +7,7 @@ use App\Contracts\NewsInterface;
 
 class NewsListService
 {
-    protected  $newsModel;
+    protected $newsModel;
 
     function __construct(News $newsModel)
     {

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class NewsService implements NewsInterface
 {
-    protected  $newsModel;
+    protected $newsModel;
 
     function __construct(News $newsModel)
     {

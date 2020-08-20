@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Mail;
 
 class NotificationService
 {
-    protected  $userModel;
+    protected $userModel;
 
     function __construct(User $userModel)
     {

@@ -6,7 +6,7 @@ use App\User;
 
 class AdminListService
 {
-    protected  $userModel;
+    protected $userModel;
 
     function __construct(User $userModel)
     {
