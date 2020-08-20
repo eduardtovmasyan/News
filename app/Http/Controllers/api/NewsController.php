@@ -50,7 +50,7 @@ class NewsController extends Controller
 
     public function getNewsTypes()
     {
-        $types = Type::getall();
+        $types = Type::getAll();
 
         return TypeResource::collection($types);
     }

@@ -14,7 +14,7 @@ class NewsController extends Controller
 {
     public function showPostNewsPage()
     {
-        $types = Type::getall();
+        $types = Type::getAll();
         $editors = News::admins();
 
         return view('admin.post_news')
@@ -24,7 +24,7 @@ class NewsController extends Controller
 
     public function showMyNewsPage()
     {
-        $types = Type::getall();
+        $types = Type::getAll();
         $news = News::index();
 
         return view('admin.news')
@@ -43,7 +43,7 @@ class NewsController extends Controller
 
     public function showNewsInfoUpdatePage($news_id)
     {
-        $types = Type::getall();
+        $types = Type::getAll();
         $news = News::show($news_id);
         $news = NewsResource::make($news);
 
@@ -119,11 +119,11 @@ class NewsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param $filter_id
      */
     public function filter($filter_id)
     {
-        $types = Type::getall();
+        $types = Type::getAll();
         $news = News::filter($filter_id);
         $news = NewsResource::collection($news);
 
