@@ -11,7 +11,7 @@ class Invitation extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    protected  $inviteData;
+    protected $inviteData;
 
     /**
      * Invitation constructor.

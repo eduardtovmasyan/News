@@ -3,9 +3,9 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ExportCsv extends Mailable
 {
@@ -32,9 +32,9 @@ class ExportCsv extends Mailable
     public function build()
     {
         return $this->view('emails.sendCSV')
-                    ->attach(public_path('storage/'.$this->csvPath), [
-                        'as' => 'export.csv',
-                        'mime' => 'text/csv',
-                    ]);
+            ->attach(public_path('storage/'.$this->csvPath), [
+                'as' => 'export.csv',
+                'mime' => 'text/csv',
+            ]);
     }
 }
